@@ -1,4 +1,4 @@
-name: dragon
+name: eater
 
 on:
   schedule:
@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Draw the dragon
+      - name: Draw the eater
         run: python generate.py --user rakhmanov-tr --out dist
 
       - name: Publish

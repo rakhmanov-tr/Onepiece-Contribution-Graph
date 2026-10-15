@@ -1,18 +1,18 @@
 # conversation-anigraph
 
-Короткий дракон проходит по сетке вкладов GitHub. Клетки остаются цветами GitHub, дракон — отдельный знак: тёмный на светлой теме, светлый на тёмной, одна латунная точка глаза.
+Мальчик идёт по сетке вкладов GitHub и ест то, что встречает: мясо на кости, яблоко, банан и рис. На еде у него открывается рот. На обратном ряду он разворачивается.
 
-Идея маршрута взята у [Platane/snk](https://github.com/Platane/snk). Рисунок и код здесь свои.
+Клетки остаются цветами GitHub. Персонаж и еда нарисованы своими фигурами.
 
 ## Профиль
 
-После первого запуска Action файлы лежат в ветке `output`. В README профиля:
+После запуска Action файлы лежат в ветке `output`. В README профиля:
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/dragon-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/dragon.svg" />
-  <img alt="Dragon crossing GitHub contributions" src="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/dragon.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater.svg" />
+  <img alt="A boy eating across GitHub contributions" src="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater.svg" />
 </picture>
 ```
 
@@ -22,6 +22,6 @@
 python generate.py --user rakhmanov-tr --out dist
 ```
 
-Нужен только Python 3. Скрипт читает публичный календарь и пишет `dist/dragon.svg` и `dist/dragon-dark.svg`.
+Нужен только Python 3. Скрипт читает публичный календарь и пишет `dist/eater.svg` и `dist/eater-dark.svg`.
 
 Action обновляет ветку `output` каждый день и по кнопке Run workflow.
