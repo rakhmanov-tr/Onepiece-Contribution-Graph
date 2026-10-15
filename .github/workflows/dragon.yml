@@ -1,4 +1,4 @@
-name: eater
+name: level
 
 on:
   schedule:
@@ -20,8 +20,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Draw the eater
-        run: python generate.py --user rakhmanov-tr --out dist
+      - name: Draw the level
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.repository_owner }}
+        run: python generate.py --user rakhmanov-tr --out dist/level.svg
 
       - name: Publish
         uses: crazy-max/ghaction-github-pages@v4

@@ -1,27 +1,25 @@
 # conversation-anigraph
 
-Мальчик идёт по сетке вкладов GitHub и ест то, что встречает: мясо на кости, яблоко, банан и рис. На еде у него открывается рот. На обратном ряду он разворачивается.
+Уровень по сетке вкладов GitHub. Бегун выходит из трубы, прыгает по клеткам, собирает монеты на самых насыщенных днях и заходит в замок.
 
-Клетки остаются цветами GitHub. Персонаж и еда нарисованы своими фигурами.
+Основа взята из [sapthesh/Mario-Contribution-Graph](https://github.com/sapthesh/Mario-Contribution-Graph) (MIT, Copyright (c) 2026 Sapthesh V). Персонаж здесь свой.
+
+## Что менять
+
+В `generate.py`:
+
+- `RUNNER_PIXELS` и `RUNNER_COLORS` — персонаж, каждый символ это пиксель
+- `CLOUD_PIXELS`, `BUSH_PIXELS`, `COIN_PIXELS` — облака, кусты и монеты
+- ниже по файлу труба, земля, флаг и замок нарисованы прямоугольниками
 
 ## Профиль
 
-После запуска Action файлы лежат в ветке `output`. В README профиля:
-
 ```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater.svg" />
-  <img alt="A boy eating across GitHub contributions" src="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/eater.svg" />
-</picture>
+<img alt="Contribution level" src="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/level.svg" />
 ```
 
 ## Локально
 
 ```bash
-python generate.py --user rakhmanov-tr --out dist
+python generate.py --user rakhmanov-tr --out dist/level.svg
 ```
-
-Нужен только Python 3. Скрипт читает публичный календарь и пишет `dist/eater.svg` и `dist/eater-dark.svg`.
-
-Action обновляет ветку `output` каждый день и по кнопке Run workflow.
