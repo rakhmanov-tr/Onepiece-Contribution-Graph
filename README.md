@@ -1,6 +1,6 @@
 # conversation-anigraph
 
-Уровень по сетке вкладов GitHub. Бегун выходит из трубы, прыгает по клеткам, собирает монеты на самых насыщенных днях и заходит в замок.
+Уровень по сетке вкладов GitHub. Пират выходит из трубы, прыгает по клеткам, собирает монеты на самых насыщенных днях и заходит в замок.
 
 Основа взята из [sapthesh/Mario-Contribution-Graph](https://github.com/sapthesh/Mario-Contribution-Graph) (MIT, Copyright (c) 2026 Sapthesh V). Персонаж здесь свой.
 

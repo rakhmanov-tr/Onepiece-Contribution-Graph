@@ -1,7 +1,7 @@
 """Contribution level, adapted from sapthesh/Mario-Contribution-Graph.
 
 Copyright (c) 2026 Sapthesh V
-Released under the MIT License. The runner sprite in this copy is original.
+Released under the MIT License. The pirate sprite in this copy is original.
 """
 
 from __future__ import annotations
@@ -18,29 +18,42 @@ DAY = re.compile(r"<td\b[^>]*class=\"[^\"]*ContributionCalendar-day[^\"]*\"[^>]*
 ROW_COL = re.compile(r"contribution-day-component-(\d+)-(\d+)")
 LEVEL = re.compile(r"data-level=\"(\d)\"")
 
-# The runner. Each character is one pixel. Edit these rows to redraw him.
+# Side-view running pirate. Each character is one pixel. The front sandal is the lowest row.
+RUNNER_SCALE = 1.2
 RUNNER_PIXELS = [
-    "  HHHHHH  ",
-    " HHHHHHHH ",
-    " HHSSSSHH ",
-    " HSEESSSE ",
-    "  SSSSSS  ",
-    "  SSMMSS  ",
-    " GGGGGGGG ",
-    "GGGGGGGGGG",
-    "GGGGGGGGGG",
-    " PP PP PP ",
-    " PP PP PP ",
-    " BB BB BB ",
+    "      YYYYYY      ",
+    "     YYYYYYYY     ",
+    "      RRRRRR      ",
+    "   YYYYYYYYYYYY   ",
+    "  AYYYYYYYYYYYYA  ",
+    "   KKKKKKKKKK     ",
+    "  KKKSSSSSSSK     ",
+    "  KKSEESSNN       ",
+    "    SSSSN         ",
+    "    SSMM          ",
+    "   RDSSSSRD       ",
+    "  RR SSSS RR      ",
+    "  S   SS   S      ",
+    "      BBB         ",
+    "     BB BBB       ",
+    "    BB    BB      ",
+    "   FF      BB     ",
+    "  OO        FF    ",
+    "             OO   ",
 ]
 RUNNER_COLORS = {
-    "H": "#1c1a17",
-    "S": "#f3c7a0",
-    "E": "#2a241c",
-    "M": "#d98474",
-    "G": "#6f8f4e",
-    "P": "#6b4b38",
-    "B": "#2b241c",
+    "Y": "#f5c518",
+    "A": "#d69210",
+    "R": "#e53935",
+    "D": "#b71c1c",
+    "K": "#161210",
+    "S": "#ffcc99",
+    "N": "#e8a060",
+    "E": "#1b120c",
+    "M": "#d64848",
+    "B": "#2172f0",
+    "F": "#f0ce8c",
+    "O": "#824e20",
 }
 
 # Decorations. Edit the pixel strings or the colors.
@@ -118,8 +131,16 @@ def fetch_contributions(username: str, token: str | None) -> list[dict]:
         return []
 
 
-def draw_sprite(name: str, pixels: list[str], colors: dict[str, str], scale: float) -> str:
-    svg = [f'    <g id="{name}">']
+def draw_sprite(
+    name: str,
+    pixels: list[str],
+    colors: dict[str, str],
+    scale: float,
+    anchor_x: float = 0,
+) -> str:
+    svg = [f'    <g id="{name}" shape-rendering="crispEdges">']
+    if anchor_x:
+        svg.append(f'      <g transform="translate({-anchor_x:.1f}, 0)">')
     for y_index, row in enumerate(pixels):
         for x_index, mark in enumerate(row):
             if mark not in colors:
@@ -128,8 +149,15 @@ def draw_sprite(name: str, pixels: list[str], colors: dict[str, str], scale: flo
                 f'      <rect x="{x_index * scale:.1f}" y="{y_index * scale:.1f}" '
                 f'width="{scale}" height="{scale}" fill="{colors[mark]}" />'
             )
+    if anchor_x:
+        svg.append("      </g>")
     svg.append("    </g>")
     return "\n".join(svg)
+
+
+def runner_foot_x() -> float:
+    foot = [index for index, mark in enumerate(RUNNER_PIXELS[-1]) if mark in RUNNER_COLORS]
+    return ((min(foot) + max(foot) + 1) / 2) * RUNNER_SCALE
 
 
 def generate(username: str, filename: str) -> None:
@@ -141,7 +169,8 @@ def generate(username: str, filename: str) -> None:
     cols = len(weeks_data) if weeks_data else 53
     rows = 7
     grid_x_offset = 40
-    top_padding = 40
+    runner_height = len(RUNNER_PIXELS) * RUNNER_SCALE
+    top_padding = int(runner_height + 26)
     flag_x = grid_x_offset + (cols * step) + 15
     castle_x = flag_x + 35
     width = castle_x + 80
@@ -168,7 +197,7 @@ def generate(username: str, filename: str) -> None:
         "    .ground-top { fill: #000000; }",
         "  </style>",
         "  <defs>",
-        draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, 1.2),
+        draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
         draw_sprite("cloud", CLOUD_PIXELS, {"W": "#FFFFFF"}, 2.0),
         draw_sprite("bush", BUSH_PIXELS, {"G": "#00A800"}, 2.0),
         draw_sprite("coin", COIN_PIXELS, {"Y": "#f8d820", "O": "#d8a000"}, 1.2),
@@ -191,7 +220,6 @@ def generate(username: str, filename: str) -> None:
     svg.append(f'  <rect x="{pipe_x}" y="{pipe_top}" width="24" height="30" fill="#00A800" stroke="#000"/>')
     svg.append(f'  <rect x="{pipe_x - 2}" y="{pipe_top}" width="28" height="10" fill="#00A800" stroke="#000"/>')
 
-    runner_height = 14
     total_travel = (castle_x + 25) - pipe_x
     path = f"M {pipe_x + 4} {ground_y} L {pipe_x + 4} {pipe_top - runner_height} "
     current_x, current_y = pipe_x + 4, pipe_top - runner_height
