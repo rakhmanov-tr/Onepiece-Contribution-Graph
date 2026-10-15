@@ -56,24 +56,31 @@ RUNNER_COLORS = {
 # Decorations. Edit the pixel strings or the colors.
 CLOUD_PIXELS = ["      WWWW      ", "   WWWWWWWWWW   ", " WWWWWWWWWWWWWW ", " WWWWWWWWWWWWWW "]
 BUSH_PIXELS = ["      GGGG      ", "   GGGGGGGGGG   ", " GGGGGGGGGGGGGG ", " GGGGGGGGGGGGGG "]
-# A small ham. Bone at both ends, pink cut on the right.
+# Diagonal ham traced from the drawing: bone knob, long cut, bone at the face.
 MEAT_PIXELS = [
-    "   KK     ",
-    "  KNNK    ",
-    " KBBBKK   ",
-    "KBBDDPPK  ",
-    "KBDDPRNK  ",
-    " KBBBNK   ",
-    "  KNNK    ",
-    "   KK     ",
+    "  KKKK                ",
+    "KNNNNK                ",
+    "KNNNNNKKKBBBK         ",
+    "KNNNNBBBBBBBBK        ",
+    " KKKBBBBBBBBBBKK      ",
+    "   KBBBBBBBBBBBBKK    ",
+    "   KBBBBBBBBBBBBBKK   ",
+    "   KDBBBBBBBPPPNNNKK  ",
+    "   KDBBBBBPPPNPPPPNK  ",
+    "   KDDBBBBPPPNPPPPPK  ",
+    "    KKBBBBPPPNPPPPPK  ",
+    "      KBBBPPPPNNPPPK  ",
+    "       KKPPPPPPNNNNNKK",
+    "         KPPPPPPNNNNNK",
+    "          KNPPPPNNNNNK",
+    "           KKNNKKNNKK ",
 ]
 MEAT_COLORS = {
     "K": "#000000",
-    "N": "#f3d7b0",
-    "B": "#c56a38",
-    "D": "#8f4524",
-    "P": "#ee9aa4",
-    "R": "#d45d6c",
+    "N": "#f0d8b0",
+    "B": "#c46a38",
+    "D": "#8a3e24",
+    "P": "#e07a88",
 }
 
 
