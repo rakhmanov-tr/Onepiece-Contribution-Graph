@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dragon</title>
+    <style>
+      body {
+        margin: 0;
+        background: #e7e5e4;
+        font-family: "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 880px;
+        margin: 48px auto;
+        display: grid;
+        gap: 28px;
+      }
+      img {
+        width: 100%;
+        display: block;
+      }
+      .dark {
+        background: #0d1117;
+        padding: 28px;
+      }
+      .light {
+        background: #ffffff;
+        padding: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="light"><img src="../dist/dragon.svg" alt="Дракон на светлой сетке вкладов" /></div>
+      <div class="dark"><img src="../dist/dragon-dark.svg" alt="Дракон на тёмной сетке вкладов" /></div>
+    </main>
+  </body>
+</html>
