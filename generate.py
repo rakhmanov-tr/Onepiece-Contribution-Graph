@@ -186,6 +186,11 @@ def generate(username: str, filename: str) -> None:
     token = os.environ.get("GITHUB_TOKEN")
     weeks_data = fetch_contributions(username, token)
     cell_size = 10
+    meat_cols = max(len(row) for row in MEAT_PIXELS)
+    meat_rows = len(MEAT_PIXELS)
+    meat_scale = cell_size / max(meat_cols, meat_rows)
+    meat_width = meat_cols * meat_scale
+    meat_height = meat_rows * meat_scale
     gap = 4
     step = cell_size + gap
     cols = len(weeks_data) if weeks_data else 53
@@ -222,7 +227,7 @@ def generate(username: str, filename: str) -> None:
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
         draw_sprite("cloud", CLOUD_PIXELS, {"W": "#FFFFFF"}, 2.0),
         draw_sprite("bush", BUSH_PIXELS, {"G": "#00A800"}, 2.0),
-        draw_sprite("meat", MEAT_PIXELS, MEAT_COLORS, 1.2),
+        draw_sprite("meat", MEAT_PIXELS, MEAT_COLORS, meat_scale),
         "  </defs>",
         '  <rect width="100%" height="100%" class="bg" />',
     ]
@@ -247,7 +252,8 @@ def generate(username: str, filename: str) -> None:
     current_x, current_y = pipe_x + 4, pipe_top - runner_height
     empty_streak = 0
     meats = []
-    meat_height = len(MEAT_PIXELS) * 1.2
+    meat_x = (cell_size - meat_width) / 2
+    meat_y = (cell_size - meat_height) / 2
 
     for col, week in enumerate(weeks_data):
         highest = rows
@@ -264,13 +270,13 @@ def generate(username: str, filename: str) -> None:
                 if row < highest:
                     highest = row
             if level == "lvl4":
-                meats.append({"x": col_x, "y": block_y - meat_height - 2, "t": (col_x - pipe_x) / total_travel})
+                meats.append({"x": col_x + meat_x, "y": block_y + meat_y, "t": (col_x - pipe_x) / total_travel})
         empty_streak = empty_streak + 1 if empty_week else 0
         target_x = col_x
         target_y = (top_padding + highest * step) - runner_height
         if empty_streak == 4:
             target_y -= 25
-            meats.append({"x": col_x, "y": target_y - meat_height, "t": (col_x - pipe_x) / total_travel})
+            meats.append({"x": col_x + meat_x, "y": target_y - meat_height, "t": (col_x - pipe_x) / total_travel})
             empty_streak = 0
         if target_y != current_y:
             path += f" Q {current_x + (target_x - current_x) / 2} {min(current_y, target_y) - 25} {target_x} {target_y}"
