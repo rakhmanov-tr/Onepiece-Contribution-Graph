@@ -55,7 +55,44 @@ RUNNER_COLORS = {
 
 # Decorations. Edit the pixel strings or the colors.
 CLOUD_PIXELS = ["      WWWW      ", "   WWWWWWWWWW   ", " WWWWWWWWWWWWWW ", " WWWWWWWWWWWWWW "]
-BUSH_PIXELS = ["      GGGG      ", "   GGGGGGGGGG   ", " GGGGGGGGGGGGGG ", " GGGGGGGGGGGGGG "]
+# Small tangerine bush for the deck edge.
+BUSH_PIXELS = [
+    "  OO  OO  ",
+    " OGGGGGOO ",
+    "GGGGGGGGGG",
+    " GGGGGGGG ",
+    "  GGGGGG  ",
+]
+BUSH_COLORS = {"G": "#2f8a34", "O": "#f08a1a"}
+# Lookout in the crow's nest, traced from the drawn sprite.
+LOOKOUT_SCALE = 1.0
+LOOKOUT_PIXELS = [
+    "  DDDDDDDD  ",
+    " KDDDDDDDDK ",
+    "KDDDDDDDDDDK",
+    "KDDDDLLLLDDK",
+    "KDDDDDDDDDDK",
+    " GS KSSK SL ",
+    "KGSKSSSKSGLK",
+    " KSSSSSSSSK ",
+    "  KSSSSSSK  ",
+    "   KKKKKK   ",
+    "    KSK     ",
+    "   K W K    ",
+    "  K WWW K   ",
+    " K KGGGK K  ",
+    "   KKKKK    ",
+    "    K K     ",
+    "    K K     ",
+]
+LOOKOUT_COLORS = {
+    "K": "#111111",
+    "D": "#0c5c30",
+    "L": "#3d9a48",
+    "S": "#f3deb0",
+    "W": "#f7f7f2",
+    "G": "#2f8a38",
+}
 # Diagonal ham traced from the drawing: bone knob, long cut, bone at the face.
 MEAT_PIXELS = [
     "  KKKK                ",
@@ -214,19 +251,21 @@ def generate(username: str, filename: str) -> None:
     svg = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">',
         "  <style>",
-        "    .bg { fill: #87CEEB; }",
+        "    .bg { fill: #8ecae6; }",
         "    .empty { fill: rgba(255,255,255,0.2); }",
         "    .lvl1 { fill: #0e4429; stroke: #000; stroke-width: 0.5; }",
         "    .lvl2 { fill: #006d32; stroke: #000; stroke-width: 0.5; }",
         "    .lvl3 { fill: #26a641; stroke: #000; stroke-width: 0.5; }",
         "    .lvl4 { fill: #39d353; stroke: #000; stroke-width: 0.5; }",
-        "    .ground { fill: #c84c0c; }",
-        "    .ground-top { fill: #000000; }",
+        "    .ground { fill: #d2a679; }",
+        "    .ground-top { fill: #6e4b2a; }",
+        "    .plank { stroke: #b4834e; stroke-width: 1; }",
         "  </style>",
         "  <defs>",
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
         draw_sprite("cloud", CLOUD_PIXELS, {"W": "#FFFFFF"}, 2.0),
-        draw_sprite("bush", BUSH_PIXELS, {"G": "#00A800"}, 2.0),
+        draw_sprite("bush", BUSH_PIXELS, BUSH_COLORS, 2.0),
+        draw_sprite("lookout", LOOKOUT_PIXELS, LOOKOUT_COLORS, LOOKOUT_SCALE),
         draw_sprite("meat", MEAT_PIXELS, MEAT_COLORS, meat_scale),
         "  </defs>",
         '  <rect width="100%" height="100%" class="bg" />',
@@ -239,17 +278,41 @@ def generate(username: str, filename: str) -> None:
         svg.append("  </use>")
 
     svg.append(f'  <rect x="0" y="{ground_y}" width="{width}" height="{height - ground_y}" class="ground" />')
-    svg.append(f'  <rect x="0" y="{ground_y}" width="{width}" height="2" class="ground-top" />')
-    for index in range(10):
-        svg.append(f'  <use href="#bush" x="{index * 120 + 30}" y="{ground_y - 8}" />')
+    svg.append(f'  <rect x="0" y="{ground_y}" width="{width}" height="3" class="ground-top" />')
+    for seam in range(ground_y + 10, height, 9):
+        svg.append(f'  <line x1="0" y1="{seam}" x2="{width}" y2="{seam}" class="plank" />')
+    for seam in range(18, width, 46):
+        svg.append(
+            f'  <line x1="{seam}" y1="{ground_y}" x2="{seam}" y2="{height}" class="plank" />'
+        )
+    bush_height = len(BUSH_PIXELS) * 2.0
+    for index in range(8):
+        svg.append(f'  <use href="#bush" x="{index * 110 + 70}" y="{ground_y - bush_height + 2}" />')
 
-    pipe_x, pipe_top = 10, ground_y - 30
-    svg.append(f'  <rect x="{pipe_x}" y="{pipe_top}" width="24" height="30" fill="#00A800" stroke="#000"/>')
-    svg.append(f'  <rect x="{pipe_x - 2}" y="{pipe_top}" width="28" height="10" fill="#00A800" stroke="#000"/>')
+    barrel_x, barrel_w, barrel_h = 4, 34, 34
+    barrel_top = ground_y - barrel_h
+    barrel_cx = barrel_x + barrel_w / 2
+    svg.append(
+        f'  <rect x="{barrel_x}" y="{barrel_top + 4}" width="{barrel_w}" height="{barrel_h - 4}" rx="4" fill="#c4894a" stroke="#5a3418" stroke-width="1"/>'
+    )
+    svg.append(
+        f'  <ellipse cx="{barrel_cx}" cy="{barrel_top + 6}" rx="{barrel_w / 2}" ry="5" fill="#a56b32" stroke="#5a3418"/>'
+    )
+    for hoop in (10, 20, 30):
+        svg.append(
+            f'  <rect x="{barrel_x - 1}" y="{barrel_top + hoop}" width="{barrel_w + 2}" height="3" fill="#5c3a22"/>'
+        )
+    svg.append(
+        f'  <rect x="{barrel_cx - 15}" y="{barrel_top + 15}" width="30" height="9" rx="1" fill="#f3e2b8" stroke="#5a3418" stroke-width="0.6"/>'
+    )
+    svg.append(
+        f'  <text x="{barrel_cx}" y="{barrel_top + 22}" text-anchor="middle" fill="#3a2416" font-family="monospace" font-weight="bold" font-size="7">SAKE</text>'
+    )
 
-    total_travel = (castle_x + 25) - pipe_x
-    path = f"M {pipe_x + 4} {ground_y} L {pipe_x + 4} {pipe_top - runner_height} "
-    current_x, current_y = pipe_x + 4, pipe_top - runner_height
+    start_x = barrel_cx
+    total_travel = (castle_x + 25) - start_x
+    path = f"M {start_x} {ground_y} L {start_x} {barrel_top - runner_height} "
+    current_x, current_y = start_x, barrel_top - runner_height
     empty_streak = 0
     meats = []
     meat_x = (cell_size - meat_width) / 2
@@ -270,13 +333,13 @@ def generate(username: str, filename: str) -> None:
                 if row < highest:
                     highest = row
             if level == "lvl4":
-                meats.append({"x": col_x + meat_x, "y": block_y + meat_y, "t": (col_x - pipe_x) / total_travel})
+                meats.append({"x": col_x + meat_x, "y": block_y + meat_y, "t": (col_x - start_x) / total_travel})
         empty_streak = empty_streak + 1 if empty_week else 0
         target_x = col_x
         target_y = (top_padding + highest * step) - runner_height
         if empty_streak == 4:
             target_y -= 25
-            meats.append({"x": col_x + meat_x, "y": target_y - meat_height, "t": (col_x - pipe_x) / total_travel})
+            meats.append({"x": col_x + meat_x, "y": target_y - meat_height, "t": (col_x - start_x) / total_travel})
             empty_streak = 0
         if target_y != current_y:
             path += f" Q {current_x + (target_x - current_x) / 2} {min(current_y, target_y) - 25} {target_x} {target_y}"
@@ -284,10 +347,8 @@ def generate(username: str, filename: str) -> None:
             path += f" L {target_x} {target_y}"
         current_x, current_y = target_x, target_y
 
-    flag_top = top_padding - 10
-    path += f" Q {current_x + 10} {current_y - 20} {flag_x - 4} {flag_top + 10} "
-    path += f" L {flag_x - 4} {ground_y - runner_height} "
-    path += f" L {castle_x + 15} {ground_y - runner_height} "
+    path += f" L {flag_x - 6} {ground_y - runner_height} "
+    path += f" L {castle_x + 18} {ground_y - runner_height} "
 
     for meat in meats:
         end = min(1.0, meat["t"] + 0.03)
@@ -303,41 +364,83 @@ def generate(username: str, filename: str) -> None:
         svg.append("    </g>")
         svg.append("  </g>")
 
-    flag_time = min(1.0, (flag_x - pipe_x) / total_travel)
-    flag_end = min(1.0, flag_time + 0.05)
+    mast_x = flag_x
+    mast_w = 5
+    nest_w = 30
+    nest_floor = 32
+    lookout_h = len(LOOKOUT_PIXELS) * LOOKOUT_SCALE
+    lookout_w = max(len(row) for row in LOOKOUT_PIXELS) * LOOKOUT_SCALE
+    lookout_x = mast_x + mast_w / 2 - lookout_w / 2
+    lookout_y = nest_floor - lookout_h
+    arrive = min(0.90, max(0.0, (mast_x - start_x) / total_travel))
+    arrive_end = min(0.96, arrive + 0.05)
+    drop = ground_y - lookout_h - lookout_y
+    nest_x = mast_x - nest_w / 2 + mast_w / 2
     svg.append(
-        f'  <rect x="{flag_x}" y="{flag_top}" width="3" height="{ground_y - flag_top}" fill="#FFF" stroke="#000" stroke-width="0.5"/>'
+        f'  <rect x="{mast_x}" y="{nest_floor - 14}" width="{mast_w}" height="{ground_y - (nest_floor - 14)}" fill="#8b5a2b" stroke="#5a3418" stroke-width="0.6"/>'
     )
-    svg.append(f'  <circle cx="{flag_x + 1.5}" cy="{flag_top}" r="4" fill="#f8d820" stroke="#000"/>')
+    svg.append(
+        f'  <rect x="{nest_x}" y="{nest_floor - 4}" width="{nest_w}" height="10" fill="#a56b32" stroke="#5a3418"/>'
+    )
     svg.append("  <g>")
     svg.append(
-        f'    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,{ground_y - flag_top - 15}; 0,{ground_y - flag_top - 15}" keyTimes="0;{flag_time:.3f};{flag_end:.3f};1" dur="20s" repeatCount="indefinite" />'
+        f'    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,{drop:.1f}; 0,{drop:.1f}" keyTimes="0;{arrive:.3f};{arrive_end:.3f};1" dur="20s" repeatCount="indefinite" />'
+    )
+    svg.append(f'    <use href="#lookout" x="{lookout_x}" y="{lookout_y}" />')
+    svg.append("  </g>")
+    svg.append(
+        f'  <rect x="{nest_x}" y="{nest_floor - 8}" width="3" height="10" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>'
     )
     svg.append(
-        f'    <polygon points="{flag_x - 15},{flag_top + 5} {flag_x},{flag_top + 5} {flag_x},{flag_top + 15}" fill="#00A800" stroke="#000"/>'
+        f'  <rect x="{nest_x + nest_w - 3}" y="{nest_floor - 8}" width="3" height="10" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>'
     )
-    svg.append("  </g>")
+    svg.append(
+        f'  <rect x="{nest_x}" y="{nest_floor - 8}" width="{nest_w}" height="3" fill="#6e4b2a"/>'
+    )
+    helm_x = castle_x
+    wheel_x = helm_x + 22
+    wheel_y = ground_y - 20
+    svg.append(
+        f'  <rect x="{helm_x}" y="{ground_y - 28}" width="4" height="28" fill="#8b5a2b" stroke="#5a3418"/>'
+    )
+    svg.append(
+        f'  <rect x="{helm_x + 40}" y="{ground_y - 28}" width="4" height="28" fill="#8b5a2b" stroke="#5a3418"/>'
+    )
+    svg.append(
+        f'  <rect x="{helm_x}" y="{ground_y - 28}" width="44" height="4" fill="#a56b32" stroke="#5a3418"/>'
+    )
+    svg.append(
+        f'  <line x1="{wheel_x - 12}" y1="{wheel_y}" x2="{wheel_x + 12}" y2="{wheel_y}" stroke="#5a3418" stroke-width="2"/>'
+    )
+    svg.append(
+        f'  <line x1="{wheel_x}" y1="{wheel_y - 12}" x2="{wheel_x}" y2="{wheel_y + 12}" stroke="#5a3418" stroke-width="2"/>'
+    )
+    svg.append(
+        f'  <line x1="{wheel_x - 8}" y1="{wheel_y - 8}" x2="{wheel_x + 8}" y2="{wheel_y + 8}" stroke="#5a3418" stroke-width="2"/>'
+    )
+    svg.append(
+        f'  <line x1="{wheel_x - 8}" y1="{wheel_y + 8}" x2="{wheel_x + 8}" y2="{wheel_y - 8}" stroke="#5a3418" stroke-width="2"/>'
+    )
+    svg.append(
+        f'  <circle cx="{wheel_x}" cy="{wheel_y}" r="12" fill="none" stroke="#3a2416" stroke-width="2.5"/>'
+    )
+    svg.append(f'  <circle cx="{wheel_x}" cy="{wheel_y}" r="2.5" fill="#3a2416"/>')
+    svg.append(
+        f'  <rect x="{wheel_x - 2}" y="{wheel_y + 12}" width="4" height="{ground_y - (wheel_y + 12)}" fill="#8b5a2b" stroke="#5a3418"/>'
+    )
     svg.append(f'  <path id="parkour-path" d="{path}" fill="none" stroke="none" />')
     svg.append('  <use href="#runner">')
     svg.append('    <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>')
     svg.append("  </use>")
-
-    castle_y = ground_y - 40
-    svg.append(
-        f'  <path d="M {castle_x} {ground_y} L {castle_x} {castle_y} L {castle_x+10} {castle_y} L {castle_x+10} {castle_y+10} L {castle_x+20} {castle_y+10} L {castle_x+20} {castle_y} L {castle_x+30} {castle_y} L {castle_x+30} {castle_y+10} L {castle_x+40} {castle_y+10} L {castle_x+40} {castle_y} L {castle_x+50} {castle_y} L {castle_x+50} {ground_y} Z" fill="#c84c0c" stroke="#000" stroke-width="1" />'
-    )
-    svg.append(
-        f'  <path d="M {castle_x+15} {ground_y} L {castle_x+15} {ground_y-20} A 10 10 0 0 1 {castle_x+35} {ground_y-20} L {castle_x+35} {ground_y} Z" fill="#000" />'
-    )
     svg.append(
         f'  <text x="{flag_x - 70}" y="{top_padding - 10}" fill="#f8d820" font-family="monospace" font-weight="bold" font-size="16" stroke="#000" stroke-width="1" opacity="0">'
     )
     svg.append("    CLEAR")
     svg.append(
-        f'    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;{flag_end:.3f};{flag_end+0.01:.3f};0.98;1" dur="20s" repeatCount="indefinite" />'
+        f'    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;{arrive_end:.3f};{min(1, arrive_end + 0.01):.3f};0.98;1" dur="20s" repeatCount="indefinite" />'
     )
     svg.append(
-        f'    <animateTransform attributeName="transform" type="translate" values="0,10; 0,10; 0,0; 0,0" keyTimes="0;{flag_end:.3f};{flag_end+0.02:.3f};1" dur="20s" repeatCount="indefinite" />'
+        f'    <animateTransform attributeName="transform" type="translate" values="0,10; 0,10; 0,0; 0,0" keyTimes="0;{arrive_end:.3f};{min(1, arrive_end + 0.02):.3f};1" dur="20s" repeatCount="indefinite" />'
     )
     svg.append("  </text>")
     svg.append("</svg>")

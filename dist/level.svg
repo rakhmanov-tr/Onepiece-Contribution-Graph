@@ -1,13 +1,14 @@
 <svg width="912" height="189" viewBox="0 0 912 189" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .bg { fill: #87CEEB; }
+    .bg { fill: #8ecae6; }
     .empty { fill: rgba(255,255,255,0.2); }
     .lvl1 { fill: #0e4429; stroke: #000; stroke-width: 0.5; }
     .lvl2 { fill: #006d32; stroke: #000; stroke-width: 0.5; }
     .lvl3 { fill: #26a641; stroke: #000; stroke-width: 0.5; }
     .lvl4 { fill: #39d353; stroke: #000; stroke-width: 0.5; }
-    .ground { fill: #c84c0c; }
-    .ground-top { fill: #000000; }
+    .ground { fill: #d2a679; }
+    .ground-top { fill: #6e4b2a; }
+    .plank { stroke: #b4834e; stroke-width: 1; }
   </style>
   <defs>
     <g id="runner" shape-rendering="crispEdges">
@@ -269,48 +270,169 @@
       <rect x="28.0" y="6.0" width="2.0" height="2.0" fill="#FFFFFF" />
     </g>
     <g id="bush" shape-rendering="crispEdges">
-      <rect x="12.0" y="0.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="14.0" y="0.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="16.0" y="0.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="18.0" y="0.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="6.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="8.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="10.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="12.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="14.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="16.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="18.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="20.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="22.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="24.0" y="2.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="2.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="4.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="6.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="8.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="10.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="12.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="14.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="16.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="18.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="20.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="22.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="24.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="26.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="28.0" y="4.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="2.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="4.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="6.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="8.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="10.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="12.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="14.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="16.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="18.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="20.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="22.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="24.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="26.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
-      <rect x="28.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
+      <rect x="4.0" y="0.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="6.0" y="0.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="12.0" y="0.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="14.0" y="0.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="2.0" y="2.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="4.0" y="2.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="6.0" y="2.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="8.0" y="2.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="10.0" y="2.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="12.0" y="2.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="14.0" y="2.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="16.0" y="2.0" width="2.0" height="2.0" fill="#f08a1a" />
+      <rect x="0.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="2.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="4.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="6.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="8.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="10.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="12.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="14.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="16.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="18.0" y="4.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="2.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="4.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="6.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="8.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="10.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="12.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="14.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="16.0" y="6.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="4.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="6.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="8.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="10.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="12.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+      <rect x="14.0" y="8.0" width="2.0" height="2.0" fill="#2f8a34" />
+    </g>
+    <g id="lookout" shape-rendering="crispEdges">
+      <rect x="2.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="3.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="4.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="5.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="6.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="7.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="8.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="9.0" y="0.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="1.0" y="1.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="2.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="3.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="4.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="5.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="6.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="7.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="8.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="9.0" y="1.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="10.0" y="1.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="0.0" y="2.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="2.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="3.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="4.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="5.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="6.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="7.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="8.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="9.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="10.0" y="2.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="11.0" y="2.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="0.0" y="3.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="2.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="3.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="4.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="5.0" y="3.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="6.0" y="3.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="7.0" y="3.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="8.0" y="3.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="9.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="10.0" y="3.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="11.0" y="3.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="0.0" y="4.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="2.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="3.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="4.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="5.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="6.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="7.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="8.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="9.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="10.0" y="4.0" width="1.0" height="1.0" fill="#0c5c30" />
+      <rect x="11.0" y="4.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="5.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="2.0" y="5.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="4.0" y="5.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="5.0" y="5.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="6.0" y="5.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="7.0" y="5.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="9.0" y="5.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="10.0" y="5.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="0.0" y="6.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="6.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="2.0" y="6.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="3.0" y="6.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="6.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="5.0" y="6.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="6.0" y="6.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="7.0" y="6.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="8.0" y="6.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="9.0" y="6.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="10.0" y="6.0" width="1.0" height="1.0" fill="#3d9a48" />
+      <rect x="11.0" y="6.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="7.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="2.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="3.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="4.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="5.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="6.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="7.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="8.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="9.0" y="7.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="10.0" y="7.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="2.0" y="8.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="3.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="4.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="5.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="6.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="7.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="8.0" y="8.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="9.0" y="8.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="3.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="5.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="6.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="7.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="8.0" y="9.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="10.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="5.0" y="10.0" width="1.0" height="1.0" fill="#f3deb0" />
+      <rect x="6.0" y="10.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="3.0" y="11.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="5.0" y="11.0" width="1.0" height="1.0" fill="#f7f7f2" />
+      <rect x="7.0" y="11.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="2.0" y="12.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="12.0" width="1.0" height="1.0" fill="#f7f7f2" />
+      <rect x="5.0" y="12.0" width="1.0" height="1.0" fill="#f7f7f2" />
+      <rect x="6.0" y="12.0" width="1.0" height="1.0" fill="#f7f7f2" />
+      <rect x="8.0" y="12.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="1.0" y="13.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="3.0" y="13.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="13.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="5.0" y="13.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="6.0" y="13.0" width="1.0" height="1.0" fill="#2f8a38" />
+      <rect x="7.0" y="13.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="9.0" y="13.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="3.0" y="14.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="14.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="5.0" y="14.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="6.0" y="14.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="7.0" y="14.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="15.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="6.0" y="15.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="4.0" y="16.0" width="1.0" height="1.0" fill="#111111" />
+      <rect x="6.0" y="16.0" width="1.0" height="1.0" fill="#111111" />
     </g>
     <g id="meat" shape-rendering="crispEdges">
       <rect x="0.9" y="0.0" width="0.45454545454545453" height="0.45454545454545453" fill="#000000" />
@@ -543,19 +665,46 @@
     <animate attributeName="x" from="912" to="-100" dur="55s" repeatCount="indefinite" />
   </use>
   <rect x="0" y="149" width="912" height="40" class="ground" />
-  <rect x="0" y="149" width="912" height="2" class="ground-top" />
-  <use href="#bush" x="30" y="141" />
-  <use href="#bush" x="150" y="141" />
-  <use href="#bush" x="270" y="141" />
-  <use href="#bush" x="390" y="141" />
-  <use href="#bush" x="510" y="141" />
-  <use href="#bush" x="630" y="141" />
-  <use href="#bush" x="750" y="141" />
-  <use href="#bush" x="870" y="141" />
-  <use href="#bush" x="990" y="141" />
-  <use href="#bush" x="1110" y="141" />
-  <rect x="10" y="119" width="24" height="30" fill="#00A800" stroke="#000"/>
-  <rect x="8" y="119" width="28" height="10" fill="#00A800" stroke="#000"/>
+  <rect x="0" y="149" width="912" height="3" class="ground-top" />
+  <line x1="0" y1="159" x2="912" y2="159" class="plank" />
+  <line x1="0" y1="168" x2="912" y2="168" class="plank" />
+  <line x1="0" y1="177" x2="912" y2="177" class="plank" />
+  <line x1="0" y1="186" x2="912" y2="186" class="plank" />
+  <line x1="18" y1="149" x2="18" y2="189" class="plank" />
+  <line x1="64" y1="149" x2="64" y2="189" class="plank" />
+  <line x1="110" y1="149" x2="110" y2="189" class="plank" />
+  <line x1="156" y1="149" x2="156" y2="189" class="plank" />
+  <line x1="202" y1="149" x2="202" y2="189" class="plank" />
+  <line x1="248" y1="149" x2="248" y2="189" class="plank" />
+  <line x1="294" y1="149" x2="294" y2="189" class="plank" />
+  <line x1="340" y1="149" x2="340" y2="189" class="plank" />
+  <line x1="386" y1="149" x2="386" y2="189" class="plank" />
+  <line x1="432" y1="149" x2="432" y2="189" class="plank" />
+  <line x1="478" y1="149" x2="478" y2="189" class="plank" />
+  <line x1="524" y1="149" x2="524" y2="189" class="plank" />
+  <line x1="570" y1="149" x2="570" y2="189" class="plank" />
+  <line x1="616" y1="149" x2="616" y2="189" class="plank" />
+  <line x1="662" y1="149" x2="662" y2="189" class="plank" />
+  <line x1="708" y1="149" x2="708" y2="189" class="plank" />
+  <line x1="754" y1="149" x2="754" y2="189" class="plank" />
+  <line x1="800" y1="149" x2="800" y2="189" class="plank" />
+  <line x1="846" y1="149" x2="846" y2="189" class="plank" />
+  <line x1="892" y1="149" x2="892" y2="189" class="plank" />
+  <use href="#bush" x="70" y="141.0" />
+  <use href="#bush" x="180" y="141.0" />
+  <use href="#bush" x="290" y="141.0" />
+  <use href="#bush" x="400" y="141.0" />
+  <use href="#bush" x="510" y="141.0" />
+  <use href="#bush" x="620" y="141.0" />
+  <use href="#bush" x="730" y="141.0" />
+  <use href="#bush" x="840" y="141.0" />
+  <rect x="4" y="119" width="34" height="30" rx="4" fill="#c4894a" stroke="#5a3418" stroke-width="1"/>
+  <ellipse cx="21.0" cy="121" rx="17.0" ry="5" fill="#a56b32" stroke="#5a3418"/>
+  <rect x="3" y="125" width="36" height="3" fill="#5c3a22"/>
+  <rect x="3" y="135" width="36" height="3" fill="#5c3a22"/>
+  <rect x="3" y="145" width="36" height="3" fill="#5c3a22"/>
+  <rect x="6.0" y="130" width="30" height="9" rx="1" fill="#f3e2b8" stroke="#5a3418" stroke-width="0.6"/>
+  <text x="21.0" y="137" text-anchor="middle" fill="#3a2416" font-family="monospace" font-weight="bold" font-size="7">SAKE</text>
   <rect x="40" y="51" width="10" height="10" rx="2" class="empty" />
   <rect x="40" y="65" width="10" height="10" rx="2" class="empty" />
   <rect x="40" y="79" width="10" height="10" rx="2" class="empty" />
@@ -929,117 +1078,128 @@
   <rect x="768" y="135" width="10" height="10" rx="2" class="empty" />
   <g transform="translate(82.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.085;0.115;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.085;0.115;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.073;0.103;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.073;0.103;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(138.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.151;0.181;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.151;0.181;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.140;0.170;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.140;0.170;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(194.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.217;0.247;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.217;0.247;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.207;0.237;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.207;0.237;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(250.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.283;0.313;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.283;0.313;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.274;0.304;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.274;0.304;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(306.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.349;0.379;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.349;0.379;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.341;0.371;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.341;0.371;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(362.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.416;0.446;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.416;0.446;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.408;0.438;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.408;0.438;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(418.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.482;0.512;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.482;0.512;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.475;0.505;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.475;0.505;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(474.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.548;0.578;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.548;0.578;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.542;0.572;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.542;0.572;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(530.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.614;0.644;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.614;0.644;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.609;0.639;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.609;0.639;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(586.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.680;0.710;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.680;0.710;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.676;0.706;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.676;0.706;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(642.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.746;0.776;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.746;0.776;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.743;0.773;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.743;0.773;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(698.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.812;0.842;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.812;0.842;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.810;0.840;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.810;0.840;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(754.0, 91.52727272727273)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.878;0.908;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.878;0.908;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.877;0.907;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.877;0.907;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g transform="translate(768.0, 108.36363636363636)">
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.895;0.925;1" dur="20s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.895;0.925;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.894;0.924;1" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.894;0.924;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <rect x="797" y="41" width="3" height="108" fill="#FFF" stroke="#000" stroke-width="0.5"/>
-  <circle cx="798.5" cy="41" r="4" fill="#f8d820" stroke="#000"/>
+  <rect x="797" y="18" width="5" height="131" fill="#8b5a2b" stroke="#5a3418" stroke-width="0.6"/>
+  <rect x="784.5" y="28" width="30" height="10" fill="#a56b32" stroke="#5a3418"/>
   <g>
-    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,93; 0,93" keyTimes="0;0.929;0.979;1" dur="20s" repeatCount="indefinite" />
-    <polygon points="782,46 797,46 797,56" fill="#00A800" stroke="#000"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,117.0; 0,117.0" keyTimes="0;0.900;0.950;1" dur="20s" repeatCount="indefinite" />
+    <use href="#lookout" x="793.5" y="15.0" />
   </g>
-  <path id="parkour-path" d="M 14 149 L 14 93.8  Q 27.0 68.8 40 123.8 L 54 123.8 L 68 123.8 Q 75.0 73.8 82 98.8 Q 89.0 73.8 96 123.8 L 110 123.8 L 124 123.8 Q 131.0 73.8 138 98.8 Q 145.0 73.8 152 123.8 L 166 123.8 L 180 123.8 Q 187.0 73.8 194 98.8 Q 201.0 73.8 208 123.8 L 222 123.8 L 236 123.8 Q 243.0 73.8 250 98.8 Q 257.0 73.8 264 123.8 L 278 123.8 L 292 123.8 Q 299.0 73.8 306 98.8 Q 313.0 73.8 320 123.8 L 334 123.8 L 348 123.8 Q 355.0 73.8 362 98.8 Q 369.0 73.8 376 123.8 L 390 123.8 L 404 123.8 Q 411.0 73.8 418 98.8 Q 425.0 73.8 432 123.8 L 446 123.8 L 460 123.8 Q 467.0 73.8 474 98.8 Q 481.0 73.8 488 123.8 L 502 123.8 L 516 123.8 Q 523.0 73.8 530 98.8 Q 537.0 73.8 544 123.8 L 558 123.8 L 572 123.8 Q 579.0 73.8 586 98.8 Q 593.0 73.8 600 123.8 L 614 123.8 L 628 123.8 Q 635.0 73.8 642 98.8 Q 649.0 73.8 656 123.8 L 670 123.8 L 684 123.8 Q 691.0 73.8 698 98.8 Q 705.0 73.8 712 123.8 L 726 123.8 L 740 123.8 Q 747.0 73.8 754 98.8 Q 761.0 56.8 768 81.8 Q 778 61.8 793 51  L 793 123.8  L 847 123.8 " fill="none" stroke="none" />
+  <rect x="784.5" y="24" width="3" height="10" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>
+  <rect x="811.5" y="24" width="3" height="10" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>
+  <rect x="784.5" y="24" width="30" height="3" fill="#6e4b2a"/>
+  <rect x="832" y="121" width="4" height="28" fill="#8b5a2b" stroke="#5a3418"/>
+  <rect x="872" y="121" width="4" height="28" fill="#8b5a2b" stroke="#5a3418"/>
+  <rect x="832" y="121" width="44" height="4" fill="#a56b32" stroke="#5a3418"/>
+  <line x1="842" y1="129" x2="866" y2="129" stroke="#5a3418" stroke-width="2"/>
+  <line x1="854" y1="117" x2="854" y2="141" stroke="#5a3418" stroke-width="2"/>
+  <line x1="846" y1="121" x2="862" y2="137" stroke="#5a3418" stroke-width="2"/>
+  <line x1="846" y1="137" x2="862" y2="121" stroke="#5a3418" stroke-width="2"/>
+  <circle cx="854" cy="129" r="12" fill="none" stroke="#3a2416" stroke-width="2.5"/>
+  <circle cx="854" cy="129" r="2.5" fill="#3a2416"/>
+  <rect x="852" y="141" width="4" height="8" fill="#8b5a2b" stroke="#5a3418"/>
+  <path id="parkour-path" d="M 21.0 149 L 21.0 89.8  Q 30.5 64.8 40 123.8 L 54 123.8 L 68 123.8 Q 75.0 73.8 82 98.8 Q 89.0 73.8 96 123.8 L 110 123.8 L 124 123.8 Q 131.0 73.8 138 98.8 Q 145.0 73.8 152 123.8 L 166 123.8 L 180 123.8 Q 187.0 73.8 194 98.8 Q 201.0 73.8 208 123.8 L 222 123.8 L 236 123.8 Q 243.0 73.8 250 98.8 Q 257.0 73.8 264 123.8 L 278 123.8 L 292 123.8 Q 299.0 73.8 306 98.8 Q 313.0 73.8 320 123.8 L 334 123.8 L 348 123.8 Q 355.0 73.8 362 98.8 Q 369.0 73.8 376 123.8 L 390 123.8 L 404 123.8 Q 411.0 73.8 418 98.8 Q 425.0 73.8 432 123.8 L 446 123.8 L 460 123.8 Q 467.0 73.8 474 98.8 Q 481.0 73.8 488 123.8 L 502 123.8 L 516 123.8 Q 523.0 73.8 530 98.8 Q 537.0 73.8 544 123.8 L 558 123.8 L 572 123.8 Q 579.0 73.8 586 98.8 Q 593.0 73.8 600 123.8 L 614 123.8 L 628 123.8 Q 635.0 73.8 642 98.8 Q 649.0 73.8 656 123.8 L 670 123.8 L 684 123.8 Q 691.0 73.8 698 98.8 Q 705.0 73.8 712 123.8 L 726 123.8 L 740 123.8 Q 747.0 73.8 754 98.8 Q 761.0 56.8 768 81.8 L 791 123.8  L 850 123.8 " fill="none" stroke="none" />
   <use href="#runner">
     <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>
   </use>
-  <path d="M 832 149 L 832 109 L 842 109 L 842 119 L 852 119 L 852 109 L 862 109 L 862 119 L 872 119 L 872 109 L 882 109 L 882 149 Z" fill="#c84c0c" stroke="#000" stroke-width="1" />
-  <path d="M 847 149 L 847 129 A 10 10 0 0 1 867 129 L 867 149 Z" fill="#000" />
   <text x="727" y="41" fill="#f8d820" font-family="monospace" font-weight="bold" font-size="16" stroke="#000" stroke-width="1" opacity="0">
     CLEAR
-    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.979;0.989;0.98;1" dur="20s" repeatCount="indefinite" />
-    <animateTransform attributeName="transform" type="translate" values="0,10; 0,10; 0,0; 0,0" keyTimes="0;0.979;0.999;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.950;0.960;0.98;1" dur="20s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" type="translate" values="0,10; 0,10; 0,0; 0,0" keyTimes="0;0.950;0.970;1" dur="20s" repeatCount="indefinite" />
   </text>
 </svg>
