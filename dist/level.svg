@@ -312,39 +312,47 @@
       <rect x="26.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
       <rect x="28.0" y="6.0" width="2.0" height="2.0" fill="#00A800" />
     </g>
-    <g id="coin" shape-rendering="crispEdges">
-      <rect x="2.4" y="0.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="3.6" y="0.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="4.8" y="0.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="6.0" y="0.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="1.2" y="1.2" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="2.4" y="1.2" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="3.6" y="1.2" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="4.8" y="1.2" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="6.0" y="1.2" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="7.2" y="1.2" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="1.2" y="2.4" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="2.4" y="2.4" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="3.6" y="2.4" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="4.8" y="2.4" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="6.0" y="2.4" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="7.2" y="2.4" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="1.2" y="3.6" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="2.4" y="3.6" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="3.6" y="3.6" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="4.8" y="3.6" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="6.0" y="3.6" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="7.2" y="3.6" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="1.2" y="4.8" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="2.4" y="4.8" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="3.6" y="4.8" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="4.8" y="4.8" width="1.2" height="1.2" fill="#d8a000" />
-      <rect x="6.0" y="4.8" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="7.2" y="4.8" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="2.4" y="6.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="3.6" y="6.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="4.8" y="6.0" width="1.2" height="1.2" fill="#f8d820" />
-      <rect x="6.0" y="6.0" width="1.2" height="1.2" fill="#f8d820" />
+    <g id="meat" shape-rendering="crispEdges">
+      <rect x="3.6" y="0.0" width="1.2" height="1.2" fill="#000000" />
+      <rect x="4.8" y="0.0" width="1.2" height="1.2" fill="#000000" />
+      <rect x="2.4" y="1.2" width="1.2" height="1.2" fill="#000000" />
+      <rect x="3.6" y="1.2" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="4.8" y="1.2" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="6.0" y="1.2" width="1.2" height="1.2" fill="#000000" />
+      <rect x="1.2" y="2.4" width="1.2" height="1.2" fill="#000000" />
+      <rect x="2.4" y="2.4" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="3.6" y="2.4" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="4.8" y="2.4" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="6.0" y="2.4" width="1.2" height="1.2" fill="#000000" />
+      <rect x="7.2" y="2.4" width="1.2" height="1.2" fill="#000000" />
+      <rect x="0.0" y="3.6" width="1.2" height="1.2" fill="#000000" />
+      <rect x="1.2" y="3.6" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="2.4" y="3.6" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="3.6" y="3.6" width="1.2" height="1.2" fill="#8f4524" />
+      <rect x="4.8" y="3.6" width="1.2" height="1.2" fill="#8f4524" />
+      <rect x="6.0" y="3.6" width="1.2" height="1.2" fill="#ee9aa4" />
+      <rect x="7.2" y="3.6" width="1.2" height="1.2" fill="#ee9aa4" />
+      <rect x="8.4" y="3.6" width="1.2" height="1.2" fill="#000000" />
+      <rect x="0.0" y="4.8" width="1.2" height="1.2" fill="#000000" />
+      <rect x="1.2" y="4.8" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="2.4" y="4.8" width="1.2" height="1.2" fill="#8f4524" />
+      <rect x="3.6" y="4.8" width="1.2" height="1.2" fill="#8f4524" />
+      <rect x="4.8" y="4.8" width="1.2" height="1.2" fill="#ee9aa4" />
+      <rect x="6.0" y="4.8" width="1.2" height="1.2" fill="#d45d6c" />
+      <rect x="7.2" y="4.8" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="8.4" y="4.8" width="1.2" height="1.2" fill="#000000" />
+      <rect x="1.2" y="6.0" width="1.2" height="1.2" fill="#000000" />
+      <rect x="2.4" y="6.0" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="3.6" y="6.0" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="4.8" y="6.0" width="1.2" height="1.2" fill="#c56a38" />
+      <rect x="6.0" y="6.0" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="7.2" y="6.0" width="1.2" height="1.2" fill="#000000" />
+      <rect x="2.4" y="7.2" width="1.2" height="1.2" fill="#000000" />
+      <rect x="3.6" y="7.2" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="4.8" y="7.2" width="1.2" height="1.2" fill="#f3d7b0" />
+      <rect x="6.0" y="7.2" width="1.2" height="1.2" fill="#000000" />
+      <rect x="3.6" y="8.4" width="1.2" height="1.2" fill="#000000" />
+      <rect x="4.8" y="8.4" width="1.2" height="1.2" fill="#000000" />
     </g>
   </defs>
   <rect width="100%" height="100%" class="bg" />
@@ -745,102 +753,102 @@
   <rect x="768" y="107" width="10" height="10" rx="2" class="lvl4" />
   <rect x="768" y="121" width="10" height="10" rx="2" class="empty" />
   <rect x="768" y="135" width="10" height="10" rx="2" class="empty" />
-  <g transform="translate(82, 94.8)">
+  <g transform="translate(82, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.085;0.115;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.085;0.115;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(138, 94.8)">
+  <g transform="translate(138, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.151;0.181;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.151;0.181;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(194, 94.8)">
+  <g transform="translate(194, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.217;0.247;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.217;0.247;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(250, 94.8)">
+  <g transform="translate(250, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.283;0.313;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.283;0.313;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(306, 94.8)">
+  <g transform="translate(306, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.349;0.379;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.349;0.379;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(362, 94.8)">
+  <g transform="translate(362, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.416;0.446;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.416;0.446;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(418, 94.8)">
+  <g transform="translate(418, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.482;0.512;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.482;0.512;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(474, 94.8)">
+  <g transform="translate(474, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.548;0.578;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.548;0.578;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(530, 94.8)">
+  <g transform="translate(530, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.614;0.644;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.614;0.644;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(586, 94.8)">
+  <g transform="translate(586, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.680;0.710;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.680;0.710;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(642, 94.8)">
+  <g transform="translate(642, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.746;0.776;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.746;0.776;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(698, 94.8)">
+  <g transform="translate(698, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.812;0.842;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.812;0.842;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(754, 94.8)">
+  <g transform="translate(754, 89.2)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.878;0.908;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.878;0.908;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g transform="translate(768, 95)">
+  <g transform="translate(768, 95.4)">
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.895;0.925;1" dur="20s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.895;0.925;1" dur="20s" repeatCount="indefinite" />
-      <use href="#coin" x="0" y="0" />
+      <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <rect x="797" y="41" width="3" height="108" fill="#FFF" stroke="#000" stroke-width="0.5"/>

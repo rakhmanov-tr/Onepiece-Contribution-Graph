@@ -56,7 +56,25 @@ RUNNER_COLORS = {
 # Decorations. Edit the pixel strings or the colors.
 CLOUD_PIXELS = ["      WWWW      ", "   WWWWWWWWWW   ", " WWWWWWWWWWWWWW ", " WWWWWWWWWWWWWW "]
 BUSH_PIXELS = ["      GGGG      ", "   GGGGGGGGGG   ", " GGGGGGGGGGGGGG ", " GGGGGGGGGGGGGG "]
-COIN_PIXELS = ["  YYYY  ", " YYOOYY ", " YOOOOY ", " YOOOOY ", " YYOOYY ", "  YYYY  "]
+# A small ham. Bone at both ends, pink cut on the right.
+MEAT_PIXELS = [
+    "   KK     ",
+    "  KNNK    ",
+    " KBBBKK   ",
+    "KBBDDPPK  ",
+    "KBDDPRNK  ",
+    " KBBBNK   ",
+    "  KNNK    ",
+    "   KK     ",
+]
+MEAT_COLORS = {
+    "K": "#000000",
+    "N": "#f3d7b0",
+    "B": "#c56a38",
+    "D": "#8f4524",
+    "P": "#ee9aa4",
+    "R": "#d45d6c",
+}
 
 
 def fetch_graphql(username: str, token: str) -> list[dict]:
@@ -197,7 +215,7 @@ def generate(username: str, filename: str) -> None:
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
         draw_sprite("cloud", CLOUD_PIXELS, {"W": "#FFFFFF"}, 2.0),
         draw_sprite("bush", BUSH_PIXELS, {"G": "#00A800"}, 2.0),
-        draw_sprite("coin", COIN_PIXELS, {"Y": "#f8d820", "O": "#d8a000"}, 1.2),
+        draw_sprite("meat", MEAT_PIXELS, MEAT_COLORS, 1.2),
         "  </defs>",
         '  <rect width="100%" height="100%" class="bg" />',
     ]
@@ -221,7 +239,8 @@ def generate(username: str, filename: str) -> None:
     path = f"M {pipe_x + 4} {ground_y} L {pipe_x + 4} {pipe_top - runner_height} "
     current_x, current_y = pipe_x + 4, pipe_top - runner_height
     empty_streak = 0
-    coins = []
+    meats = []
+    meat_height = len(MEAT_PIXELS) * 1.2
 
     for col, week in enumerate(weeks_data):
         highest = rows
@@ -238,13 +257,13 @@ def generate(username: str, filename: str) -> None:
                 if row < highest:
                     highest = row
             if level == "lvl4":
-                coins.append({"x": col_x, "y": block_y - 12, "t": (col_x - pipe_x) / total_travel})
+                meats.append({"x": col_x, "y": block_y - meat_height - 2, "t": (col_x - pipe_x) / total_travel})
         empty_streak = empty_streak + 1 if empty_week else 0
         target_x = col_x
         target_y = (top_padding + highest * step) - runner_height
         if empty_streak == 4:
             target_y -= 25
-            coins.append({"x": col_x, "y": target_y - 4, "t": (col_x - pipe_x) / total_travel})
+            meats.append({"x": col_x, "y": target_y - meat_height, "t": (col_x - pipe_x) / total_travel})
             empty_streak = 0
         if target_y != current_y:
             path += f" Q {current_x + (target_x - current_x) / 2} {min(current_y, target_y) - 25} {target_x} {target_y}"
@@ -257,17 +276,17 @@ def generate(username: str, filename: str) -> None:
     path += f" L {flag_x - 4} {ground_y - runner_height} "
     path += f" L {castle_x + 15} {ground_y - runner_height} "
 
-    for coin in coins:
-        end = min(1.0, coin["t"] + 0.03)
-        svg.append(f'  <g transform="translate({coin["x"]}, {coin["y"]})">')
+    for meat in meats:
+        end = min(1.0, meat["t"] + 0.03)
+        svg.append(f'  <g transform="translate({meat["x"]}, {meat["y"]})">')
         svg.append("    <g>")
         svg.append(
-            f'      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;{coin["t"]:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
+            f'      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;{meat["t"]:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
         )
         svg.append(
-            f'      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;{coin["t"]:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
+            f'      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;{meat["t"]:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
         )
-        svg.append('      <use href="#coin" x="0" y="0" />')
+        svg.append('      <use href="#meat" x="0" y="0" />')
         svg.append("    </g>")
         svg.append("  </g>")
 
