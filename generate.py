@@ -68,31 +68,33 @@ BUSH_COLORS = {"G": "#2f8a34", "O": "#f08a1a"}
 # Lookout in the crow's nest, traced from the drawn sprite.
 # Scaled in generate() so his height matches the pirate.
 LOOKOUT_PIXELS = [
-    "  DDDDDDDD  ",
-    " KDDDDDDDDK ",
-    "KDDDDDDDDDDK",
-    "KDDDDLLLLDDK",
-    "KDDDDDDDDDDK",
-    " GS KSSK SL ",
-    "KGSKSSSKSGLK",
-    " KSSSSSSSSK ",
-    "  KSSSSSSK  ",
-    "   KKKKKK   ",
-    "    KSK     ",
-    "   K W K    ",
-    "  K WWW K   ",
-    " K KGGGK K  ",
-    "   KKKKK    ",
-    "    K K     ",
-    "    K K     ",
+    "  DDDDDDDD   ",
+    " KDDDDDDDDK  ",
+    "KDDDDDDDDDDK ",
+    "KDDDDDDDDDDK ",
+    "KDDDDLLLLDDKK",
+    "KDDDDDDDDDDK ",
+    "GDDKSSSKDDGLK",
+    " GSKSSSKSGDK ",
+    "KG SSSSSSGK  ",
+    " KSSSSSSSSK  ",
+    "  KKKKKKKK   ",
+    "   K S K     ",
+    "  K  W  K    ",
+    " K WWWWW K   ",
+    "K KGGGGGK K  ",
+    "  K KKK K    ",
+    "   K D K     ",
+    "   K D K     ",
+    "    K K      ",
 ]
 LOOKOUT_COLORS = {
-    "K": "#111111",
-    "D": "#0c5c30",
-    "L": "#3d9a48",
-    "S": "#f3deb0",
-    "W": "#f7f7f2",
-    "G": "#2f8a38",
+    "K": "#101010",
+    "D": "#0a5530",
+    "L": "#2f8c38",
+    "S": "#f3d7a8",
+    "W": "#f4f6ef",
+    "G": "#2a7a32",
 }
 # Diagonal ham traced from the drawing: bone knob, long cut, bone at the face.
 MEAT_PIXELS = [
@@ -120,36 +122,34 @@ MEAT_COLORS = {
     "D": "#8a3e24",
     "P": "#e07a88",
 }
-# Pixel barrel. The SAKE label is drawn over the pale band.
+# Barrel traced from the drawing, with SAKE written in pixels.
 BARREL_SCALE = 2.0
 BARREL_PIXELS = [
-    "   KKKKKKKKKK   ",
-    "  KNNNNNNNNNNK  ",
-    " KWWWWWWWWWWWWK ",
-    "KWWWDWWWWWDWWWWK",
-    "KWWWWWWWWWWWWWWK",
-    "KHHHHHHHHHHHHHHK",
-    "KWWWWWWWWWWWWWWK",
-    "KWWLLLLLLLLLLWWK",
-    "KWWLLLLLLLLLLWWK",
-    "KWWLLLLLLLLLLWWK",
-    "KWWLLLLLLLLLLWWK",
-    "KWWWWWWWWWWWWWWK",
-    "KHHHHHHHHHHHHHHK",
-    "KWWWWWWWWWWWWWWK",
-    "KHHHHHHHHHHHHHHK",
-    "KWWWDWWWWWDWWWWK",
-    " KWWWWWWWWWWWWK ",
-    "  KNNNNNNNNNNK  ",
-    "   KKKKKKKKKK   ",
+    "    KKKKKKKKKK    ",
+    "  KKWWWWWWWWWWKK  ",
+    " KWWDDWWDDWWDDWWK ",
+    "KMMMMMMMMMMMMMMMMK",
+    "KWWWWWWWWWWWWWWWWK",
+    "KWWDDWWDDWWDDWWWWK",
+    "KWSSSWWSWWSWSWSSSK",
+    "KWSWWWSSSWSSWWSWWK",
+    "KWWSSWSSSWSWSWSSWK",
+    "KWSSSWWSWWSWSWSSSK",
+    "KWWWWWWWWWWWWWWWWK",
+    "KWWDDWWDDWWDDWWWWK",
+    "KMMMMMMMMMMMMMMMMK",
+    "TTKWWDDWWDDWWDDWWK",
+    " TTKWWWWWWWWWWWWK ",
+    "  TK KWWWWWWWWKK  ",
+    "      KKKKKKKK    ",
 ]
 BARREL_COLORS = {
-    "K": "#3d2914",
-    "W": "#e2b56a",
-    "N": "#f6d7a2",
-    "D": "#c4894a",
-    "H": "#4a3018",
-    "L": "#f7e7c4",
+    "K": "#3a2210",
+    "W": "#e07028",
+    "D": "#7a3810",
+    "M": "#b0aaa4",
+    "S": "#2a160c",
+    "T": "#e8a820",
 }
 
 
@@ -385,14 +385,10 @@ def generate(username: str, filename: str) -> None:
 
     barrel_w = max(len(row) for row in BARREL_PIXELS) * BARREL_SCALE
     barrel_h = len(BARREL_PIXELS) * BARREL_SCALE
-    barrel_x = 4
+    barrel_x = 2
     barrel_top = ground_y - barrel_h
     barrel_cx = barrel_x + barrel_w / 2
     svg.append(f'  <use href="#barrel" x="{barrel_x}" y="{barrel_top}" />')
-    svg.append(
-        f'  <text x="{barrel_cx}" y="{barrel_top + 18}" text-anchor="middle" fill="#3d2914" '
-        f'font-family="monospace" font-weight="bold" font-size="7">SAKE</text>'
-    )
 
     start_x = barrel_cx
     segments: list[tuple] = []
