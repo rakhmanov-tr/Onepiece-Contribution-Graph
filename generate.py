@@ -135,31 +135,29 @@ LOOKOUT_COLORS = {
     "W": "#f7f4ee",
     "E": "#1a6b38",
 }
-# Diagonal ham traced from the drawing: bone knob, long cut, bone at the face.
+# Ham sized to one contribution cell: bone knob, shaded meat, cut face.
 MEAT_PIXELS = [
-    "  KKKK                ",
-    "KNNNNK                ",
-    "KNNNNNKKKBBBK         ",
-    "KNNNNBBBBBBBBK        ",
-    " KKKBBBBBBBBBBKK      ",
-    "   KBBBBBBBBBBBBKK    ",
-    "   KBBBBBBBBBBBBBKK   ",
-    "   KDBBBBBBBPPPNNNKK  ",
-    "   KDBBBBBPPPNPPPPNK  ",
-    "   KDDBBBBPPPNPPPPPK  ",
-    "    KKBBBBPPPNPPPPPK  ",
-    "      KBBBPPPPNNPPPK  ",
-    "       KKPPPPPPNNNNNKK",
-    "         KPPPPPPNNNNNK",
-    "          KNPPPPNNNNNK",
-    "           KKNNKKNNKK ",
+    ".KKKK.....",
+    "KNWWNK....",
+    "KNHBBBK...",
+    ".KDBBLHK..",
+    "..KDBBBPK.",
+    "...KDDBPQK",
+    "....KDBPPK",
+    ".....KDPNK",
+    "......KWNK",
+    ".......KK.",
 ]
 MEAT_COLORS = {
-    "K": "#000000",
+    "K": "#3a140c",
+    "D": "#8a3418",
+    "B": "#c45a30",
+    "L": "#e88848",
+    "H": "#f0b070",
+    "P": "#e07080",
+    "Q": "#f4a8a8",
     "N": "#f0d8b0",
-    "B": "#c46a38",
-    "D": "#8a3e24",
-    "P": "#e07a88",
+    "W": "#fff6e4",
 }
 # Barrel traced from the drawing: staves, two hoops, and a tap. No background.
 BARREL_SCALE = 1.0
