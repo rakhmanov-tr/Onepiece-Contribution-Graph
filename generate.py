@@ -321,6 +321,182 @@ def time_at_x(samples: list[tuple[float, float]], target_x: float, total: float)
     return min(0.97, max(0.01, walked / total))
 
 
+# Deck floor in the barrel's wood. Light comes from above, so each board is a
+# stave turned on its side: dark caulking, lit edge, body, shade.
+DECK_OUTLINE = "#4a2810"
+DECK_DARKER = {
+    "#d07028": "#c05e1c",
+    "#c05e1c": "#a04e14",
+    "#a04e14": "#8a420c",
+    "#8a420c": "#7c3a06",
+    "#7c3a06": "#6a3204",
+    "#6a3204": "#6a3204",
+    "#4a2810": "#4a2810",
+}
+DECK_LIGHTER = {
+    "#4a2810": "#6a3204",
+    "#6a3204": "#7c3a06",
+    "#7c3a06": "#8a420c",
+    "#8a420c": "#a04e14",
+    "#a04e14": "#c05e1c",
+    "#c05e1c": "#d07028",
+    "#d07028": "#d07028",
+}
+# Gunwale the pirate stands on: outline, sun lip, lit oak, shadow under the nosing.
+DECK_RIM = ("#4a2810", "#d07028", "#c05e1c", "#6a3204")
+# Face of a plank, top to bottom. Seams between planks are drawn separately.
+DECK_FACES = (
+    ("#d07028", "#c05e1c", "#a04e14", "#8a420c", "#6a3204"),
+    ("#c05e1c", "#a04e14", "#8a420c", "#7c3a06", "#6a3204"),
+    ("#d07028", "#c05e1c", "#a04e14", "#7c3a06", "#6a3204"),
+    ("#a04e14", "#8a420c", "#7c3a06", "#6a3204", "#6a3204"),
+    ("#d07028", "#c05e1c", "#a04e14", "#8a420c", "#7c3a06"),
+    ("#c05e1c", "#a04e14", "#8a420c", "#7c3a06", "#6a3204"),
+)
+DECK_BOARD_LENGTHS = (28, 36, 22, 44, 31, 39, 26, 42)
+
+
+def _deck_joints(width: int, index: int, above: list[int]) -> list[int]:
+    """Butt joints for one plank. Staggered, and kept off the joints of the plank above."""
+    joints: list[int] = []
+    cursor = 0
+    step = 0
+    if index % 2:
+        cursor = DECK_BOARD_LENGTHS[index % len(DECK_BOARD_LENGTHS)] // 2
+    while cursor < width - 2:
+        length = DECK_BOARD_LENGTHS[(index + step) % len(DECK_BOARD_LENGTHS)]
+        step += 1
+        joint = cursor + length
+        if joint >= width - 1:
+            break
+        if any(abs(joint - other) < 6 for other in above):
+            joint += 8
+        if joint < width - 1:
+            joints.append(joint)
+            cursor = joint
+        else:
+            break
+    return joints
+
+
+def _deck_paint_plank(
+    grid: list[list[str]], y: int, face: tuple[str, ...], index: int, above: list[int]
+) -> list[int]:
+    """One horizontal board: seam, shaded face, staggered butts, grain, knots, nails."""
+    width = len(grid[0])
+    height = len(grid)
+    seam = min(y, height)
+    if seam >= height:
+        return []
+    for x in range(width):
+        grid[seam][x] = DECK_OUTLINE
+    face_top = seam + 1
+    face_h = min(len(face), height - face_top)
+    if face_h <= 0:
+        return []
+    for row in range(face_h):
+        color = face[row]
+        for x in range(width):
+            grid[face_top + row][x] = color
+
+    joints = _deck_joints(width, index, above)
+    edges = [0, *joints, width]
+    for board, (start, end) in enumerate(zip(edges, edges[1:])):
+        if (index + board) % 5 == 0:
+            for row in range(face_h):
+                for x in range(start, end):
+                    grid[face_top + row][x] = DECK_DARKER[grid[face_top + row][x]]
+        span = end - start
+        if span > 14:
+            marks = (
+                (1, 4 + ((index * 3 + board) % 6), 2 + (board % 3)),
+                (min(3, face_h - 2), span // 2 + 3, 2 + (index % 2)),
+            )
+            for row_off, x_off, length in marks:
+                if row_off <= 0 or row_off >= face_h - 1:
+                    continue
+                row = face_top + row_off
+                for dx in range(length):
+                    pixel = start + x_off + dx
+                    if start < pixel < end - 2:
+                        grid[row][pixel] = DECK_DARKER[grid[row][pixel]]
+        if face_h >= 4 and (index * 3 + board) % 7 == 2 and end - start > 16:
+            knot_x = start + max(6, (end - start) // 3)
+            knot_y = face_top + face_h // 2 - 1
+            knot = ("#7c3a06", "#6a3204", "#7c3a06")
+            for dx, color in enumerate(knot):
+                pixel = knot_x + dx - 1
+                if 0 <= pixel < width:
+                    grid[knot_y][pixel] = color
+            if knot_y + 1 < face_top + face_h:
+                grid[knot_y + 1][knot_x] = DECK_OUTLINE
+
+    for joint in joints:
+        for row in range(face_h):
+            grid[face_top + row][joint] = DECK_OUTLINE
+            if joint - 1 >= 0 and row != 0:
+                grid[face_top + row][joint - 1] = DECK_DARKER[grid[face_top + row][joint - 1]]
+        if joint + 1 < width:
+            grid[face_top][joint + 1] = DECK_LIGHTER[grid[face_top][joint + 1]]
+
+    nail_row = face_top + face_h // 2
+    for start, end in zip(edges, edges[1:]):
+        span = end - start
+        if span < 10:
+            continue
+        nails = [start + 3, end - 4]
+        if span > 36:
+            nails.append(start + span // 2)
+        for nail_x in nails:
+            if nail_x <= 0 or nail_x >= width - 1 or nail_x in joints:
+                continue
+            grid[nail_row][nail_x] = DECK_OUTLINE
+            grid[nail_row][nail_x + 1] = "#c4bbb2"
+            if nail_row + 1 < face_top + face_h and nail_x + 1 not in joints:
+                grid[nail_row + 1][nail_x] = "#6e6864"
+    return joints
+
+
+def deck_rects(width: int, top: int, bottom: int) -> list[tuple[int, int, int, int, str]]:
+    """Horizontal deck planks from the walking line down, in the barrel palette."""
+    height = bottom - top
+    if width <= 0 or height <= 0:
+        return []
+    grid = [["#6a3204"] * width for _ in range(height)]
+    for row, color in enumerate(DECK_RIM[:height]):
+        for x in range(width):
+            grid[row][x] = color
+        if row == 2:
+            bolt = 9
+            while bolt < width - 1:
+                grid[row][bolt] = DECK_OUTLINE
+                grid[row][bolt + 1] = "#c4bbb2"
+                bolt += 27
+
+    y = min(len(DECK_RIM), height)
+    index = 0
+    above: list[int] = []
+    while y < height:
+        face = DECK_FACES[index % len(DECK_FACES)]
+        above = _deck_paint_plank(grid, y, face, index, above)
+        y += 1 + len(face)
+        index += 1
+    for x in range(width):
+        grid[-1][x] = DECK_OUTLINE
+
+    rects: list[tuple[int, int, int, int, str]] = []
+    for row, pixels in enumerate(grid):
+        x = 0
+        while x < width:
+            color = pixels[x]
+            end = x + 1
+            while end < width and pixels[end] == color:
+                end += 1
+            rects.append((x, top + row, end - x, 1, color))
+            x = end
+    return rects
+
+
 def generate(username: str, filename: str) -> None:
     token = os.environ.get("GITHUB_TOKEN")
     weeks_data = fetch_contributions(username, token)
@@ -360,9 +536,6 @@ def generate(username: str, filename: str) -> None:
         "    .lvl2 { fill: #006d32; stroke: #000; stroke-width: 0.5; }",
         "    .lvl3 { fill: #26a641; stroke: #000; stroke-width: 0.5; }",
         "    .lvl4 { fill: #39d353; stroke: #000; stroke-width: 0.5; }",
-        "    .ground { fill: #d2a679; }",
-        "    .ground-top { fill: #6e4b2a; }",
-        "    .plank { stroke: #b4834e; stroke-width: 1; }",
         "  </style>",
         "  <defs>",
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
@@ -381,28 +554,12 @@ def generate(username: str, filename: str) -> None:
         )
         svg.append("  </use>")
 
-    plank_h, plank_w = 8, 28
-    plank_colors = ("#e8c49a", "#d7ae78", "#c99662")
-    board_row = 0
-    board_y = ground_y
-    while board_y < height:
-        shift = (board_row % 2) * (plank_w // 2)
-        board_x = -shift
-        tone = plank_colors[board_row % 3]
-        while board_x < width:
-            svg.append(
-                f'  <rect x="{board_x}" y="{board_y}" width="{plank_w - 1}" height="{plank_h - 1}" fill="{tone}" />'
-            )
-            svg.append(
-                f'  <rect x="{board_x + 4}" y="{board_y + 2}" width="2" height="2" fill="#6e4b2a" />'
-            )
-            svg.append(
-                f'  <rect x="{board_x + plank_w - 8}" y="{board_y + 2}" width="2" height="2" fill="#6e4b2a" />'
-            )
-            board_x += plank_w
-        board_y += plank_h
-        board_row += 1
-    svg.append(f'  <rect x="0" y="{ground_y}" width="{width}" height="3" class="ground-top" />')
+    svg.append('  <g id="deck" shape-rendering="crispEdges">')
+    for deck_x, deck_y, deck_w, deck_h, deck_fill in deck_rects(width, ground_y, height):
+        svg.append(
+            f'    <rect x="{deck_x}" y="{deck_y}" width="{deck_w}" height="{deck_h}" fill="{deck_fill}" />'
+        )
+    svg.append("  </g>")
     bush_height = len(BUSH_PIXELS) * 2.0
     bush_width = max(len(row) for row in BUSH_PIXELS) * 2.0
     bush_x = 78
