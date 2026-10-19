@@ -1,4 +1,4 @@
-# conversation-anigraph
+# Onepiece-Contribution-Graph
 
 Уровень по сетке вкладов GitHub. Пират вылезает из бочки SAKE на палубе, прыгает по клеткам, собирает мясо на самых насыщенных днях и доходит до штурвала. У мачты смотровой спускается с марса.
 
@@ -15,7 +15,7 @@
 ## Профиль
 
 ```html
-<img alt="Contribution level" src="https://raw.githubusercontent.com/rakhmanov-tr/conversation-anigraph/output/level.svg" />
+<img alt="Contribution level" src="https://raw.githubusercontent.com/rakhmanov-tr/Onepiece-Contribution-Graph/output/level.svg" />
 ```
 
 ## Локально

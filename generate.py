@@ -349,7 +349,7 @@ def fetch_graphql(username: str, token: str) -> list[dict]:
     request = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": query, "variables": {"userName": username}}).encode(),
-        headers={"Authorization": f"Bearer {token}", "User-Agent": "conversation-anigraph"},
+        headers={"Authorization": f"Bearer {token}", "User-Agent": "Onepiece-Contribution-Graph"},
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         data = json.loads(response.read().decode())
@@ -359,7 +359,7 @@ def fetch_graphql(username: str, token: str) -> list[dict]:
 def fetch_public(username: str) -> list[dict]:
     request = urllib.request.Request(
         f"https://github.com/users/{username}/contributions",
-        headers={"User-Agent": "conversation-anigraph"},
+        headers={"User-Agent": "Onepiece-Contribution-Graph"},
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         html = response.read().decode("utf-8", "replace")
