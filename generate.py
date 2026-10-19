@@ -135,18 +135,24 @@ LOOKOUT_COLORS = {
     "W": "#f7f4ee",
     "E": "#1a6b38",
 }
-# Ham sized to one contribution cell: bone knob, shaded meat, cut face.
+# The original diagonal ham, with the same shading steps as the barrel.
 MEAT_PIXELS = [
-    ".KKKK.....",
-    "KNWWNK....",
-    "KNHBBBK...",
-    ".KDBBLHK..",
-    "..KDBBBPK.",
-    "...KDDBPQK",
-    "....KDBPPK",
-    ".....KDPNK",
-    "......KWNK",
-    ".......KK.",
+    "  KKKK                ",
+    "KNWWNK                ",
+    "KNWNNNKKKHHHK         ",
+    "KNNNNHBBBBLLBK        ",
+    " KKKBBBBBBLLBBKK      ",
+    "   KHBBBLLBBBBBBKK    ",
+    "   KBBBBBBBBBBBBBKK   ",
+    "   KDBBBBBBBQQQNNNKK  ",
+    "   KDBBBBBPPPQQQQQNK  ",
+    "   KDDBBBBPPPPQQQQPK  ",
+    "    KKBBBBPPPPNPPPPK  ",
+    "      KDBBPPPPNNPPPK  ",
+    "       KKPPPPPPNWNNNKK",
+    "         KPPPPPPNNNNNK",
+    "          KNPPPPWNNNNK",
+    "           KKNNKKNNKK ",
 ]
 MEAT_COLORS = {
     "K": "#3a140c",
