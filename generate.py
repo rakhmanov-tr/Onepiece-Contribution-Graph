@@ -56,15 +56,51 @@ RUNNER_COLORS = {
 
 # Decorations. Edit the pixel strings or the colors.
 CLOUD_PIXELS = ["      WWWW      ", "   WWWWWWWWWW   ", " WWWWWWWWWWWWWW ", " WWWWWWWWWWWWWW "]
-# Small tangerine bush for the deck edge.
+# Tangerine shrubs for the deck edge. Lit from the upper right, like the barrel.
+BUSH_COLORS = {
+    "K": "#10280e",
+    "D": "#16441e",
+    "G": "#2a7430",
+    "L": "#3f9a3c",
+    "H": "#8ed45e",
+    "O": "#e87814",
+    "C": "#c45a0c",
+    "P": "#f0b030",
+    "S": "#6a3204",
+    "R": "#4a2810",
+}
 BUSH_PIXELS = [
-    "  OO  OO  ",
-    " OGGGGGOO ",
-    "GGGGGGGGGG",
-    " GGGGGGGG ",
-    "  GGGGGG  ",
+    "....H......H......H...",
+    "...KLK....KLK....KLK..",
+    ".KKKGLK..KDGLK..KDGLK.",
+    "KPPPK...KDGGGGLKDGGGL.",
+    "KPOCK..KDGGGGGGGGGGGGL",
+    "KCCCK.KDGGGGGKKKGGGGGL",
+    "HKKK.KDGGGGGKPPPKGGGGL",
+    "KGGG.KGGGGGGKPOCKGGGGL",
+    "KGGGGGGGGGGGKCCCKGGGDL",
+    ".KGGGGGGGGGGGKKKGGGDDK",
+    "..KDDGGGGGGGGGGGGDDK..",
+    "...KK...RRSSRR...KK...",
+    ".....K.RSSSSSSR.K.....",
+    "......KRRRRRRRRK......",
 ]
-BUSH_COLORS = {"G": "#2f8a34", "O": "#f08a1a"}
+BUSH_B_PIXELS = [
+    "....H......H......H...",
+    "...KLK....KLK....KLK..",
+    "..KDGLK..KDGLK..KDGLK.",
+    "..KKK...KDGGGGLKDGGGL.",
+    ".KPPPK.KDGGGGGKKKGGGGL",
+    ".KPOCKKDGGGGGKPPPKGGGL",
+    "HKCCCKDGGGGGGKPOCKGGGL",
+    "KGKKKKGGGGGGGKCCCKGGGL",
+    "KGGGGGGGGGGGGGKKKGGGDL",
+    ".KGGGGGGGGGGGGGGGGGDDK",
+    "..KDDGGGGGGGGGGGGDDK..",
+    "...KK...RRSSRR...KK...",
+    ".....K.RSSSSSSR.K.....",
+    "......KRRRRRRRRK......",
+]
 # Lookout in the crow's nest, traced from the drawn sprite.
 # Same front-facing grid as the pirate. Scaled so his height matches.
 LOOKOUT_PIXELS = [
@@ -810,7 +846,8 @@ def generate(username: str, filename: str) -> None:
         "  <defs>",
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
         draw_sprite("cloud", CLOUD_PIXELS, {"W": "#FFFFFF"}, 2.0),
-        draw_sprite("bush", BUSH_PIXELS, BUSH_COLORS, 2.0),
+        draw_sprite("bush", BUSH_PIXELS, BUSH_COLORS, 1.0),
+        draw_sprite("bush-b", BUSH_B_PIXELS, BUSH_COLORS, 1.0),
         draw_sprite("lookout", LOOKOUT_PIXELS, LOOKOUT_COLORS, lookout_scale),
         draw_sprite("barrel", BARREL_PIXELS, BARREL_COLORS, BARREL_SCALE),
         draw_sprite("wheel", WHEEL_PIXELS, WHEEL_COLORS, 1.0),
@@ -831,12 +868,15 @@ def generate(username: str, filename: str) -> None:
             f'    <rect x="{deck_x}" y="{deck_y}" width="{deck_w}" height="{deck_h}" fill="{deck_fill}" />'
         )
     svg.append("  </g>")
-    bush_height = len(BUSH_PIXELS) * 2.0
-    bush_width = max(len(row) for row in BUSH_PIXELS) * 2.0
+    bush_height = len(BUSH_PIXELS)
+    bush_width = max(len(row) for row in BUSH_PIXELS)
     bush_x = 78
+    bush_kind = 0
     while bush_x + bush_width < mast_x - 80:
-        svg.append(f'  <use href="#bush" x="{bush_x}" y="{ground_y - bush_height + 2}" />')
+        bush_name = "bush" if bush_kind % 2 == 0 else "bush-b"
+        svg.append(f'  <use href="#{bush_name}" x="{bush_x}" y="{ground_y - bush_height + 3}" />')
         bush_x += 96
+        bush_kind += 1
 
     barrel_w = max(len(row) for row in BARREL_PIXELS) * BARREL_SCALE
     barrel_h = len(BARREL_PIXELS) * BARREL_SCALE
