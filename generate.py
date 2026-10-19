@@ -178,6 +178,120 @@ BARREL_COLORS = {
     "Y": "#f0b028",
     "P": "#ffe08a",
 }
+WHEEL_COLORS = {
+    "K": "#4a2810",
+    "D": "#6a3204",
+    "A": "#7c3a06",
+    "C": "#a04e14",
+    "L": "#c05e1c",
+    "H": "#d07028",
+    "M": "#6e6864",
+    "N": "#c4bbb2",
+}
+
+
+def wheel_pixels() -> list[str]:
+    """Ship's wheel from the front: rim, eight spokes, handles, iron hub."""
+    size = 31
+    center = size // 2
+    mask = [["."] * size for _ in range(size)]
+    rank = {".": 0, "spoke": 1, "rim": 2, "line": 3, "handle": 4, "knob": 5, "hub": 6}
+
+    def mark(x: int, y: int, kind: str) -> None:
+        if 0 <= x < size and 0 <= y < size and rank[kind] >= rank[mask[y][x]]:
+            mask[y][x] = kind
+
+    def circle(radius: int) -> list[tuple[int, int]]:
+        x, y, error = radius, 0, 1 - radius
+        points: list[tuple[int, int]] = []
+        while x >= y:
+            points += [
+                (x, y), (y, x), (-x, y), (-y, x),
+                (x, -y), (y, -x), (-x, -y), (-y, -x),
+            ]
+            y += 1
+            if error < 0:
+                error += 2 * y + 1
+            else:
+                x -= 1
+                error += 2 * (y - x) + 1
+        return points
+
+    for dx, dy in circle(9) + circle(12):
+        mark(center + dx, center + dy, "line")
+    for dx, dy in circle(10) + circle(11):
+        mark(center + dx, center + dy, "rim")
+    for step in range(8):
+        angle = -math.pi / 2 + step * math.pi / 4
+        side_x = int(round(-math.sin(angle)))
+        side_y = int(round(math.cos(angle)))
+        for radius in range(4, 11):
+            spoke_x = center + int(round(math.cos(angle) * radius))
+            spoke_y = center + int(round(math.sin(angle) * radius))
+            mark(spoke_x, spoke_y, "spoke")
+            mark(spoke_x + side_x, spoke_y + side_y, "spoke")
+        handle_x = center + int(round(math.cos(angle) * 14))
+        handle_y = center + int(round(math.sin(angle) * 14))
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                if dx == 0 and dy == 0:
+                    mark(handle_x, handle_y, "knob")
+                elif abs(dx) + abs(dy) == 1:
+                    mark(handle_x + dx, handle_y + dy, "handle")
+                else:
+                    mark(handle_x + dx, handle_y + dy, "line")
+        mark(
+            center + int(round(math.cos(angle) * 13)),
+            center + int(round(math.sin(angle) * 13)),
+            "rim",
+        )
+    for dy in range(-2, 3):
+        for dx in range(-2, 3):
+            if max(abs(dx), abs(dy)) <= 1 or abs(dx) + abs(dy) <= 2:
+                mark(center + dx, center + dy, "hub")
+
+    rows: list[str] = []
+    for y in range(size):
+        chars: list[str] = []
+        for x in range(size):
+            kind = mask[y][x]
+            light = (x - center) - (y - center)
+            if kind == "line":
+                chars.append("K")
+            elif kind == "knob":
+                chars.append("H")
+            elif kind == "handle":
+                chars.append("L")
+            elif kind == "hub":
+                if x == center and y == center:
+                    chars.append("K")
+                elif light > 1:
+                    chars.append("N")
+                else:
+                    chars.append("M")
+            elif kind == "rim":
+                if light > 8:
+                    chars.append("H")
+                elif light > 2:
+                    chars.append("L")
+                elif light > -4:
+                    chars.append("C")
+                else:
+                    chars.append("A")
+            elif kind == "spoke":
+                if light > 4:
+                    chars.append("C")
+                elif light > -2:
+                    chars.append("A")
+                else:
+                    chars.append("D")
+            else:
+                chars.append(".")
+        rows.append("".join(chars))
+    return rows
+
+
+WHEEL_PIXELS = wheel_pixels()
 
 
 def fetch_graphql(username: str, token: str) -> list[dict]:
@@ -497,6 +611,162 @@ def deck_rects(width: int, top: int, bottom: int) -> list[tuple[int, int, int, i
     return rects
 
 
+MAST_FACE = ("#4a2810", "#6a3204", "#7c3a06", "#a04e14", "#c05e1c", "#d07028", "#4a2810")
+MAST_HOOP = ("#4a2810", "#6e6864", "#6e6864", "#c4bbb2", "#c4bbb2", "#c4bbb2", "#4a2810")
+MAST_HOOP_SHADE = ("#4a2810", "#4a2810", "#6e6864", "#6e6864", "#c4bbb2", "#6e6864", "#4a2810")
+
+
+def _append_rects(svg: list[str], rects: list[tuple[int, int, int, int, str]]) -> None:
+    for x, y, w, h, fill in rects:
+        svg.append(f'    <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" />')
+
+
+def _rle_rows(grid: list[list[str | None]], origin_x: int, origin_y: int) -> list[tuple[int, int, int, int, str]]:
+    rects: list[tuple[int, int, int, int, str]] = []
+    for y, row in enumerate(grid):
+        x = 0
+        while x < len(row):
+            color = row[x]
+            if color is None:
+                x += 1
+                continue
+            end = x + 1
+            while end < len(row) and row[end] == color:
+                end += 1
+            rects.append((origin_x + x, origin_y + y, end - x, 1, color))
+            x = end
+    return rects
+
+
+def mast_rects(mast_x: int, top: int, bottom: int, nest_top: int, nest_bottom: int) -> list[tuple[int, int, int, int, str]]:
+    """Vertical spar: barrel stave, iron hoops, and a truck at the head."""
+    rects: list[tuple[int, int, int, int, str]] = []
+    for column, color in enumerate(MAST_FACE):
+        rects.append((mast_x + column, top, 1, bottom - top, color))
+    cap_x = mast_x - 1
+    cap = ("..KHHHK..", ".KLLLLLK.", "KLLLLLLLK")
+    cap_colors = {"K": "#4a2810", "H": "#d07028", "L": "#c05e1c"}
+    for row, marks in enumerate(cap):
+        for column, mark in enumerate(marks):
+            if mark in cap_colors:
+                rects.append((cap_x + column, top - 2 + row, 1, 1, cap_colors[mark]))
+    grain_y = top + 16
+    while grain_y < bottom - 8:
+        if not nest_top <= grain_y <= nest_bottom:
+            rects.append((mast_x + 2, grain_y, 1, 3, "#6a3204"))
+        grain_y += 18
+    hoop_y = top + 10
+    while hoop_y < bottom - 10:
+        if not nest_top - 2 <= hoop_y <= nest_bottom:
+            for column, color in enumerate(MAST_HOOP):
+                rects.append((mast_x + column, hoop_y, 1, 1, color))
+            for column, color in enumerate(MAST_HOOP_SHADE):
+                rects.append((mast_x + column, hoop_y + 1, 1, 1, color))
+        hoop_y += 26
+    return rects
+
+
+def ladder_rects(mast_x: int, mast_w: int, top: int, bottom: int) -> list[tuple[int, int, int, int, str]]:
+    """Ratlines beside the mast: twisted ropes and wooden rungs."""
+    if bottom - top < 6:
+        return []
+    left = mast_x + mast_w
+    right = left + 10
+    height = bottom - top
+    twist_a = ("#4a2810", "#c05e1c", "#c05e1c", "#4a2810")
+    twist_b = ("#6a3204", "#d07028", "#a04e14", "#6a3204")
+    columns = [[] for _ in range(4)]
+    for y in range(height):
+        colors = twist_a if (y // 2) % 2 == 0 else twist_b
+        for index, color in enumerate(colors):
+            columns[index].append(color)
+    rects: list[tuple[int, int, int, int, str]] = []
+    for index, x in enumerate((left, left + 1, right, right + 1)):
+        start = 0
+        while start < height:
+            end = start + 1
+            while end < height and columns[index][end] == columns[index][start]:
+                end += 1
+            rects.append((x, top + start, 1, end - start, columns[index][start]))
+            start = end
+    rung_w = right + 2 - left
+    rung_y = top + 4
+    while rung_y + 1 < bottom:
+        rects.append((left, rung_y, rung_w, 1, "#d07028"))
+        rects.append((left, rung_y + 1, rung_w, 1, "#6a3204"))
+        rects.append((left, rung_y, 1, 2, "#4a2810"))
+        rects.append((right + 1, rung_y, 1, 2, "#4a2810"))
+        rung_y += 8
+    return rects
+
+
+def nest_rects(mast_x: int, mast_w: int, lookout_w: float, nest_floor: float) -> list[tuple[int, int, int, int, str]]:
+    """Crow's nest: hoop, back staves, and a plank floor the lookout stands on."""
+    width = int(round(lookout_w + 18))
+    if width % 2 == 0:
+        width += 1
+    left = int(round(mast_x + mast_w / 2 - width / 2))
+    top = int(nest_floor) - 16
+    grid: list[list[str | None]] = [[None] * width for _ in range(22)]
+
+    def fill(x: int, y: int, color: str) -> None:
+        if 0 <= x < width and 0 <= y < len(grid):
+            grid[y][x] = color
+
+    for y in range(22):
+        for x, color in enumerate(("#4a2810", "#6a3204", "#8a420c")):
+            fill(x, y, color)
+        for x, color in enumerate(("#c05e1c", "#d07028", "#4a2810")):
+            fill(width - 3 + x, y, color)
+    for x in range(1, width - 1):
+        fill(x, 0, "#4a2810")
+    for x in range(2, width - 2):
+        fill(x, 1, "#d07028")
+        fill(x, 2, "#6a3204")
+    for x in range(5, width - 5, 4):
+        face = "#a04e14" if (x // 4) % 2 == 0 else "#8a420c"
+        for y in range(3, 16):
+            fill(x, y, "#6a3204")
+            fill(x + 1, y, face)
+    for row, color in enumerate(("#4a2810", "#d07028", "#c05e1c", "#a04e14", "#6a3204", "#4a2810")):
+        for x in range(width):
+            fill(x, 16 + row, color)
+        fill(0, 16 + row, "#4a2810")
+        fill(width - 1, 16 + row, "#4a2810")
+    bolt = 6
+    while bolt < width - 6:
+        fill(bolt, 17, "#4a2810")
+        fill(bolt + 1, 17, "#c4bbb2")
+        bolt += 8
+    return _rle_rows(grid, left, top)
+
+
+def helm_rects(wheel_x: int, wheel_y: int, ground_y: int) -> list[tuple[int, int, int, int, str]]:
+    """Binnacle and the step under the wheel, in the deck's wood."""
+    rects: list[tuple[int, int, int, int, str]] = []
+    plat_w = 36
+    plat_x = wheel_x - plat_w // 2
+    plat_y = ground_y - 6
+    for row, color in enumerate(("#4a2810", "#d07028", "#c05e1c", "#a04e14", "#6a3204", "#4a2810")):
+        rects.append((plat_x, plat_y + row, plat_w, 1, color))
+    bolt = plat_x + 6
+    while bolt < plat_x + plat_w - 6:
+        rects.append((bolt, plat_y + 2, 1, 1, "#4a2810"))
+        rects.append((bolt + 1, plat_y + 2, 1, 1, "#c4bbb2"))
+        bolt += 10
+    post_x = wheel_x - 3
+    post_top = wheel_y + 12
+    for column, color in enumerate(MAST_FACE):
+        rects.append((post_x + column, post_top, 1, plat_y - post_top, color))
+    for column, color in enumerate(MAST_HOOP):
+        rects.append((post_x + column, post_top + 2, 1, 1, color))
+    rects.append((post_x - 3, plat_y - 4, 3, 4, "#6a3204"))
+    rects.append((post_x + len(MAST_FACE), plat_y - 4, 3, 4, "#a04e14"))
+    rects.append((post_x - 3, plat_y - 4, 3, 1, "#4a2810"))
+    rects.append((post_x + len(MAST_FACE), plat_y - 4, 3, 1, "#4a2810"))
+    return rects
+
+
 def generate(username: str, filename: str) -> None:
     token = os.environ.get("GITHUB_TOKEN")
     weeks_data = fetch_contributions(username, token)
@@ -543,6 +813,7 @@ def generate(username: str, filename: str) -> None:
         draw_sprite("bush", BUSH_PIXELS, BUSH_COLORS, 2.0),
         draw_sprite("lookout", LOOKOUT_PIXELS, LOOKOUT_COLORS, lookout_scale),
         draw_sprite("barrel", BARREL_PIXELS, BARREL_COLORS, BARREL_SCALE),
+        draw_sprite("wheel", WHEEL_PIXELS, WHEEL_COLORS, 1.0),
         draw_sprite("meat", MEAT_PIXELS, MEAT_COLORS, meat_scale),
         "  </defs>",
         '  <rect width="100%" height="100%" class="bg" />',
@@ -662,66 +933,32 @@ def generate(username: str, filename: str) -> None:
         svg.append("    </g>")
         svg.append("  </g>")
 
-    mast_w = 6
+    mast_w = len(MAST_FACE)
     lookout_h = runner_height
     lookout_w = max(len(row) for row in LOOKOUT_PIXELS) * lookout_scale
-    nest_w = lookout_w + 18
     nest_floor = lookout_h + 10
     lookout_x = mast_x + mast_w / 2 - lookout_w / 2
     lookout_y = nest_floor - lookout_h
     drop = ground_y - lookout_h - lookout_y
-    nest_x = mast_x - nest_w / 2 + mast_w / 2
-    svg.append(
-        f'  <rect x="{mast_x}" y="6" width="{mast_w}" height="{ground_y - 6}" fill="#8b5a2b" stroke="#5a3418" stroke-width="0.6"/>'
-    )
-    ladder_x = mast_x + mast_w
-    svg.append(
-        f'  <rect x="{ladder_x + 11}" y="{nest_floor}" width="3" height="{ground_y - nest_floor}" fill="#5a3418"/>'
-    )
-    rung = nest_floor + 2
-    while rung < ground_y - 2:
-        svg.append(
-            f'  <rect x="{ladder_x}" y="{rung}" width="14" height="3" fill="#e2b56a" stroke="#3d2914" stroke-width="0.4"/>'
-        )
-        rung += 8
-    svg.append(
-        f'  <rect x="{nest_x}" y="{nest_floor - 6}" width="{nest_w}" height="12" fill="#a56b32" stroke="#5a3418"/>'
-    )
+    nest_top = int(nest_floor) - 16
+    nest_bottom = nest_top + 22
+    svg.append('  <g id="rigging" shape-rendering="crispEdges">')
+    _append_rects(svg, mast_rects(mast_x, 6, ground_y, nest_top, nest_bottom))
+    _append_rects(svg, ladder_rects(mast_x, mast_w, int(nest_floor) + 2, ground_y - 1))
+    _append_rects(svg, nest_rects(mast_x, mast_w, lookout_w, nest_floor))
+    svg.append("  </g>")
     svg.append("  <g>")
     svg.append(
         f'    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,{drop:.1f}; 0,{drop:.1f}" keyTimes="0;{slide_start:.3f};{slide_end:.3f};1" dur="20s" repeatCount="indefinite" />'
     )
     svg.append(f'    <use href="#lookout" x="{lookout_x}" y="{lookout_y}" />')
     svg.append("  </g>")
-    svg.append(
-        f'  <rect x="{nest_x}" y="{nest_floor - 10}" width="4" height="16" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>'
-    )
-    svg.append(
-        f'  <rect x="{nest_x + nest_w - 4}" y="{nest_floor - 10}" width="4" height="16" fill="#6e4b2a" stroke="#5a3418" stroke-width="0.4"/>'
-    )
-    svg.append(
-        f'  <rect x="{nest_x}" y="{nest_floor - 10}" width="{nest_w}" height="3" fill="#6e4b2a"/>'
-    )
     wheel_x = helm_x + 24
     wheel_y = ground_y - 24
-    svg.append(
-        f'  <rect x="{wheel_x - 3}" y="{wheel_y + 14}" width="6" height="{ground_y - (wheel_y + 14)}" fill="#8b5a2b" stroke="#5a3418"/>'
-    )
-    svg.append(
-        f'  <rect x="{wheel_x - 14}" y="{ground_y - 6}" width="28" height="6" fill="#a56b32" stroke="#5a3418"/>'
-    )
-    for peg in range(8):
-        angle = peg * 3.14159 / 4
-        peg_x = wheel_x + 14 * math.cos(angle)
-        peg_y = wheel_y + 14 * math.sin(angle)
-        svg.append(f'  <circle cx="{peg_x:.1f}" cy="{peg_y:.1f}" r="2.2" fill="#e2b56a" stroke="#3d2914"/>')
-        svg.append(
-            f'  <line x1="{wheel_x}" y1="{wheel_y}" x2="{peg_x:.1f}" y2="{peg_y:.1f}" stroke="#5a3418" stroke-width="1.4"/>'
-        )
-    svg.append(
-        f'  <circle cx="{wheel_x}" cy="{wheel_y}" r="13" fill="none" stroke="#3d2914" stroke-width="3"/>'
-    )
-    svg.append(f'  <circle cx="{wheel_x}" cy="{wheel_y}" r="3" fill="#e2b56a" stroke="#3d2914"/>')
+    svg.append('  <g id="helm" shape-rendering="crispEdges">')
+    _append_rects(svg, helm_rects(wheel_x, wheel_y, ground_y))
+    svg.append(f'    <use href="#wheel" x="{wheel_x - 15}" y="{wheel_y - 15}" />')
+    svg.append("  </g>")
     svg.append(f'  <path id="parkour-path" d="{" ".join(commands)}" fill="none" stroke="none" />')
     svg.append('  <use href="#runner">')
     svg.append('    <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>')
