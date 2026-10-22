@@ -899,12 +899,14 @@ def generate(username: str, filename: str) -> None:
     barrel_x = 2
     barrel_top = ground_y - barrel_h
     barrel_cx = barrel_x + barrel_w / 2
-    svg.append(f'  <use href="#barrel" x="{barrel_x}" y="{barrel_top}" />')
 
     start_x = barrel_cx
+    # Feet on the deck, so the whole pirate is inside the barrel. The barrel is
+    # drawn after him and hides him until this climb carries him out of the top.
+    inside_y = ground_y - runner_height
     segments: list[tuple] = []
-    commands = [f"M {start_x:.1f} {ground_y:.1f}"]
-    current_x, current_y = start_x, ground_y
+    commands = [f"M {start_x:.1f} {inside_y:.1f}"]
+    current_x, current_y = start_x, inside_y
 
     def add_line(x: float, y: float) -> None:
         nonlocal current_x, current_y
@@ -1039,6 +1041,7 @@ def generate(username: str, filename: str) -> None:
     svg.append('  <use href="#runner">')
     svg.append(f'    <animateMotion dur="{LOOP_SECONDS}s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>')
     svg.append("  </use>")
+    svg.append(f'  <use href="#barrel" x="{barrel_x}" y="{barrel_top}" />')
     svg.append("</svg>")
     Path(filename).parent.mkdir(parents=True, exist_ok=True)
     Path(filename).write_text("\n".join(svg), encoding="utf-8")

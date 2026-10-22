@@ -7162,7 +7162,6 @@
   <use href="#bush" x="462" y="138" />
   <use href="#bush-b" x="558" y="138" />
   <use href="#bush" x="654" y="138" />
-  <use href="#barrel" x="2" y="114.0" />
   <rect x="40" y="51" width="10" height="10" rx="2" class="empty" />
   <rect x="40" y="65" width="10" height="10" rx="2" class="empty" />
   <rect x="40" y="79" width="10" height="10" rx="2" class="empty" />
@@ -7535,130 +7534,130 @@
   <rect x="768" y="121" width="10" height="10" rx="2" class="empty" />
   <rect x="768" y="135" width="10" height="10" rx="2" class="empty" />
   <style>
-    @keyframes meat-fade-0 { 0%, 10.8% { opacity: 1; } 13.8%, 100% { opacity: 0; } }
+    @keyframes meat-fade-0 { 0%, 9.6% { opacity: 1; } 12.6%, 100% { opacity: 0; } }
     #meat-pop-0 { animation: meat-fade-0 20s linear infinite; }
-    @keyframes meat-fade-1 { 0%, 16.9% { opacity: 1; } 19.9%, 100% { opacity: 0; } }
+    @keyframes meat-fade-1 { 0%, 15.8% { opacity: 1; } 18.8%, 100% { opacity: 0; } }
     #meat-pop-1 { animation: meat-fade-1 20s linear infinite; }
-    @keyframes meat-fade-2 { 0%, 23.1% { opacity: 1; } 26.1%, 100% { opacity: 0; } }
+    @keyframes meat-fade-2 { 0%, 22.0% { opacity: 1; } 25.0%, 100% { opacity: 0; } }
     #meat-pop-2 { animation: meat-fade-2 20s linear infinite; }
-    @keyframes meat-fade-3 { 0%, 29.2% { opacity: 1; } 32.2%, 100% { opacity: 0; } }
+    @keyframes meat-fade-3 { 0%, 28.2% { opacity: 1; } 31.2%, 100% { opacity: 0; } }
     #meat-pop-3 { animation: meat-fade-3 20s linear infinite; }
-    @keyframes meat-fade-4 { 0%, 35.3% { opacity: 1; } 38.3%, 100% { opacity: 0; } }
+    @keyframes meat-fade-4 { 0%, 34.4% { opacity: 1; } 37.4%, 100% { opacity: 0; } }
     #meat-pop-4 { animation: meat-fade-4 20s linear infinite; }
-    @keyframes meat-fade-5 { 0%, 41.4% { opacity: 1; } 44.4%, 100% { opacity: 0; } }
+    @keyframes meat-fade-5 { 0%, 40.6% { opacity: 1; } 43.6%, 100% { opacity: 0; } }
     #meat-pop-5 { animation: meat-fade-5 20s linear infinite; }
-    @keyframes meat-fade-6 { 0%, 47.5% { opacity: 1; } 50.5%, 100% { opacity: 0; } }
+    @keyframes meat-fade-6 { 0%, 46.8% { opacity: 1; } 49.8%, 100% { opacity: 0; } }
     #meat-pop-6 { animation: meat-fade-6 20s linear infinite; }
-    @keyframes meat-fade-7 { 0%, 53.6% { opacity: 1; } 56.6%, 100% { opacity: 0; } }
+    @keyframes meat-fade-7 { 0%, 53.0% { opacity: 1; } 56.0%, 100% { opacity: 0; } }
     #meat-pop-7 { animation: meat-fade-7 20s linear infinite; }
-    @keyframes meat-fade-8 { 0%, 59.8% { opacity: 1; } 62.8%, 100% { opacity: 0; } }
+    @keyframes meat-fade-8 { 0%, 59.2% { opacity: 1; } 62.2%, 100% { opacity: 0; } }
     #meat-pop-8 { animation: meat-fade-8 20s linear infinite; }
-    @keyframes meat-fade-9 { 0%, 65.9% { opacity: 1; } 68.9%, 100% { opacity: 0; } }
+    @keyframes meat-fade-9 { 0%, 65.4% { opacity: 1; } 68.4%, 100% { opacity: 0; } }
     #meat-pop-9 { animation: meat-fade-9 20s linear infinite; }
-    @keyframes meat-fade-10 { 0%, 72.0% { opacity: 1; } 75.0%, 100% { opacity: 0; } }
+    @keyframes meat-fade-10 { 0%, 71.6% { opacity: 1; } 74.6%, 100% { opacity: 0; } }
     #meat-pop-10 { animation: meat-fade-10 20s linear infinite; }
-    @keyframes meat-fade-11 { 0%, 78.1% { opacity: 1; } 81.1%, 100% { opacity: 0; } }
+    @keyframes meat-fade-11 { 0%, 77.8% { opacity: 1; } 80.8%, 100% { opacity: 0; } }
     #meat-pop-11 { animation: meat-fade-11 20s linear infinite; }
-    @keyframes meat-fade-12 { 0%, 86.5% { opacity: 1; } 89.5%, 100% { opacity: 0; } }
+    @keyframes meat-fade-12 { 0%, 86.3% { opacity: 1; } 89.3%, 100% { opacity: 0; } }
     #meat-pop-12 { animation: meat-fade-12 20s linear infinite; }
-    @keyframes meat-fade-13 { 0%, 88.4% { opacity: 1; } 91.4%, 100% { opacity: 0; } }
+    @keyframes meat-fade-13 { 0%, 88.3% { opacity: 1; } 91.3%, 100% { opacity: 0; } }
     #meat-pop-13 { animation: meat-fade-13 20s linear infinite; }
   </style>
   <g id="meat-pop-0" opacity="1" transform="translate(82.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.108;0.138;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.096;0.126;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.108;0.138;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.096;0.126;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-1" opacity="1" transform="translate(138.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.169;0.199;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.158;0.188;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.169;0.199;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.158;0.188;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-2" opacity="1" transform="translate(194.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.231;0.261;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.220;0.250;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.231;0.261;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.220;0.250;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-3" opacity="1" transform="translate(250.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.292;0.322;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.282;0.312;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.292;0.322;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.282;0.312;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-4" opacity="1" transform="translate(306.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.353;0.383;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.344;0.374;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.353;0.383;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.344;0.374;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-5" opacity="1" transform="translate(362.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.414;0.444;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.406;0.436;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.414;0.444;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.406;0.436;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-6" opacity="1" transform="translate(418.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.475;0.505;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.468;0.498;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.475;0.505;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.468;0.498;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-7" opacity="1" transform="translate(474.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.536;0.566;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.530;0.560;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.536;0.566;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.530;0.560;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-8" opacity="1" transform="translate(530.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.598;0.628;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.592;0.622;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.598;0.628;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.592;0.622;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-9" opacity="1" transform="translate(586.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.659;0.689;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.654;0.684;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.659;0.689;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.654;0.684;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-10" opacity="1" transform="translate(642.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.720;0.750;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.716;0.746;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.720;0.750;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.716;0.746;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-11" opacity="1" transform="translate(698.0, 91.52727272727273)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.781;0.811;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.778;0.808;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.781;0.811;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.778;0.808;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-12" opacity="1" transform="translate(754.0, 108.36363636363636)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.865;0.895;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.863;0.893;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.865;0.895;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.863;0.893;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
   <g id="meat-pop-13" opacity="1" transform="translate(768.0, 66.36363636363636)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.884;0.914;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.883;0.913;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.884;0.914;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.883;0.913;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
@@ -8340,7 +8339,7 @@
     <rect x="790.0000" y="40.0000" width="35.1200" height="1.1200" fill="#4a2810" />
   </g>
   <g>
-    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,113.8; 0,113.8" keyTimes="0;0.908;0.967;1" dur="20s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,113.8; 0,113.8" keyTimes="0;0.907;0.967;1" dur="20s" repeatCount="indefinite" />
     <use href="#lookout" x="799.31" y="10.000000000000004" />
   </g>
   <g id="helm" shape-rendering="crispEdges">
@@ -8376,8 +8375,9 @@
     <rect x="890.0000" y="139.0000" width="3.1200" height="1.1200" fill="#4a2810" />
     <use href="#wheel" x="871" y="110" />
   </g>
-  <path id="parkour-path" d="M 18.5 149.0 L 18.5 88.8 Q 29.2 63.8 40.0 123.8 L 54.0 123.8 L 68.0 123.8 Q 75.0 73.8 82.0 98.8 Q 89.0 73.8 96.0 123.8 L 110.0 123.8 L 124.0 123.8 Q 131.0 73.8 138.0 98.8 Q 145.0 73.8 152.0 123.8 L 166.0 123.8 L 180.0 123.8 Q 187.0 73.8 194.0 98.8 Q 201.0 73.8 208.0 123.8 L 222.0 123.8 L 236.0 123.8 Q 243.0 73.8 250.0 98.8 Q 257.0 73.8 264.0 123.8 L 278.0 123.8 L 292.0 123.8 Q 299.0 73.8 306.0 98.8 Q 313.0 73.8 320.0 123.8 L 334.0 123.8 L 348.0 123.8 Q 355.0 73.8 362.0 98.8 Q 369.0 73.8 376.0 123.8 L 390.0 123.8 L 404.0 123.8 Q 411.0 73.8 418.0 98.8 Q 425.0 73.8 432.0 123.8 L 446.0 123.8 L 460.0 123.8 Q 467.0 73.8 474.0 98.8 Q 481.0 73.8 488.0 123.8 L 502.0 123.8 L 516.0 123.8 Q 523.0 73.8 530.0 98.8 Q 537.0 73.8 544.0 123.8 L 558.0 123.8 L 572.0 123.8 Q 579.0 73.8 586.0 98.8 Q 593.0 73.8 600.0 123.8 L 614.0 123.8 L 628.0 123.8 Q 635.0 73.8 642.0 98.8 Q 649.0 73.8 656.0 123.8 L 670.0 123.8 L 684.0 123.8 Q 691.0 73.8 698.0 98.8 Q 705.0 73.8 712.0 123.8 L 726.0 123.8 L 740.0 123.8 Q 747.0 56.8 754.0 81.8 Q 761.0 14.8 768.0 39.8 Q 791.0 -26.0 814.0 10.0 L 814.0 123.8 L 878.0 123.8" fill="none" stroke="none" />
+  <path id="parkour-path" d="M 18.5 123.8 L 18.5 88.8 Q 29.2 63.8 40.0 123.8 L 54.0 123.8 L 68.0 123.8 Q 75.0 73.8 82.0 98.8 Q 89.0 73.8 96.0 123.8 L 110.0 123.8 L 124.0 123.8 Q 131.0 73.8 138.0 98.8 Q 145.0 73.8 152.0 123.8 L 166.0 123.8 L 180.0 123.8 Q 187.0 73.8 194.0 98.8 Q 201.0 73.8 208.0 123.8 L 222.0 123.8 L 236.0 123.8 Q 243.0 73.8 250.0 98.8 Q 257.0 73.8 264.0 123.8 L 278.0 123.8 L 292.0 123.8 Q 299.0 73.8 306.0 98.8 Q 313.0 73.8 320.0 123.8 L 334.0 123.8 L 348.0 123.8 Q 355.0 73.8 362.0 98.8 Q 369.0 73.8 376.0 123.8 L 390.0 123.8 L 404.0 123.8 Q 411.0 73.8 418.0 98.8 Q 425.0 73.8 432.0 123.8 L 446.0 123.8 L 460.0 123.8 Q 467.0 73.8 474.0 98.8 Q 481.0 73.8 488.0 123.8 L 502.0 123.8 L 516.0 123.8 Q 523.0 73.8 530.0 98.8 Q 537.0 73.8 544.0 123.8 L 558.0 123.8 L 572.0 123.8 Q 579.0 73.8 586.0 98.8 Q 593.0 73.8 600.0 123.8 L 614.0 123.8 L 628.0 123.8 Q 635.0 73.8 642.0 98.8 Q 649.0 73.8 656.0 123.8 L 670.0 123.8 L 684.0 123.8 Q 691.0 73.8 698.0 98.8 Q 705.0 73.8 712.0 123.8 L 726.0 123.8 L 740.0 123.8 Q 747.0 56.8 754.0 81.8 Q 761.0 14.8 768.0 39.8 Q 791.0 -26.0 814.0 10.0 L 814.0 123.8 L 878.0 123.8" fill="none" stroke="none" />
   <use href="#runner">
     <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>
   </use>
+  <use href="#barrel" x="2" y="114.0" />
 </svg>
