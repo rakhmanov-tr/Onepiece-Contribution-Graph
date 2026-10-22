@@ -15,9 +15,18 @@ import urllib.request
 from pathlib import Path
 
 LEVELS = ("NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE")
+# One crossing of the level, same duration as Mario-Contribution-Graph.
+LOOP_SECONDS = 20
 DAY = re.compile(r"<td\b[^>]*class=\"[^\"]*ContributionCalendar-day[^\"]*\"[^>]*>", re.I)
 ROW_COL = re.compile(r"contribution-day-component-(\d+)-(\d+)")
 LEVEL = re.compile(r"data-level=\"(\d)\"")
+DATE = re.compile(r'data-date="(\d{4}-\d{2}-\d{2})"')
+# GitHub's English calendar: month at the first Sunday of that month, and only
+# Mon/Wed/Fri down the side. Sunday is row 0.
+MONTH_NAMES = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+# Row 0 is Sunday. Every row is one weekday, so each name sits on its own cubes.
+WEEKDAY_LABELS = ((0, "Sun"), (1, "Mon"), (2, "Tue"), (3, "Wed"), (4, "Thu"), (5, "Fri"), (6, "Sat"))
+CALENDAR_FONT = 9
 
 # Front-facing pirate, traced from the drawn sprite. Each character is one pixel.
 RUNNER_SCALE = 1.2
@@ -181,11 +190,11 @@ BARREL_PIXELS = [
     "......DAAAADACCCCCBACLLLLCDCLLLD ",
     ".....DDAAAADACCCBBAACLLLLCDCLLLCK",
     ".....DDAAAADBBBCBBAACLLLLCDCLLLLD",
-    ".....DDAAAADBCBCBBAACLLLLCDCLLLLD",
-    ".....DAAAAADABBCBBAACLLLLCDLLLLLD",
-    ".....DAAAAADBCCCBBAACLLLLCDLLLLLD",
-    ".....DAAAAADBCBCCBAACLLLLCDLLLLLD",
-    ".....DAAAAADBBBBBCAACLLLLCDLLLLLD",
+    ".....DDAAAAZZZBCZBAZCZLZZZDCLLLLD",
+    ".....DAAAAAZABBZBZAZZLLZLCDLLLLLD",
+    ".....DAAAAAZZZCZZZAZCLLZZCDLLLLLD",
+    ".....DAAAAADBZBZCZAZZLLZLCDLLLLLD",
+    ".....DAAAAAZZZBZBZAZCZLZZZDLLLLLD",
     ".....DAAAAADACCBBCAACLLLLCDLLLLLD",
     ".....DAAAAADBCBCBCAACLLLLCDLLLLLD",
     ".....DAAAAADBCBCCCAACLLLLCDLLLLLD",
@@ -217,6 +226,7 @@ BARREL_COLORS = {
     "G": "#c47a18",
     "Y": "#f0b028",
     "P": "#ffe08a",
+    "Z": "#1a0c08",
 }
 WHEEL_COLORS = {
     "K": "#4a2810",
@@ -340,7 +350,7 @@ def fetch_graphql(username: str, token: str) -> list[dict]:
       user(login: $userName){
         contributionsCollection {
           contributionCalendar {
-            weeks { contributionDays { contributionLevel } }
+            weeks { contributionDays { contributionLevel date } }
           }
         }
       }
@@ -363,14 +373,15 @@ def fetch_public(username: str) -> list[dict]:
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         html = response.read().decode("utf-8", "replace")
-    found: dict[tuple[int, int], int] = {}
+    found: dict[tuple[int, int], tuple[int, str]] = {}
     for tag in DAY.findall(html):
         slot = ROW_COL.search(tag)
         level = LEVEL.search(tag)
         if not slot or not level:
             continue
         row, col = int(slot.group(1)), int(slot.group(2))
-        found[(col, row)] = int(level.group(1))
+        day = DATE.search(tag)
+        found[(col, row)] = (int(level.group(1)), day.group(1) if day else "")
     if not found:
         return []
     cols = max(col for col, _ in found) + 1
@@ -380,12 +391,31 @@ def fetch_public(username: str) -> list[dict]:
         weeks.append(
             {
                 "contributionDays": [
-                    {"contributionLevel": LEVELS[min(found.get((col, row), 0), 4)]}
+                    {
+                        "contributionLevel": LEVELS[min(found.get((col, row), (0, ""))[0], 4)],
+                        "date": found.get((col, row), (0, ""))[1],
+                    }
                     for row in range(rows)
                 ]
             }
         )
     return weeks
+
+
+def month_columns(weeks: list[dict]) -> list[tuple[int, str]]:
+    """Columns where GitHub prints a month name: each week's Sunday."""
+    labels: list[tuple[int, str]] = []
+    previous = 0
+    for index, week in enumerate(weeks):
+        days = week.get("contributionDays") or []
+        iso = str(days[0].get("date") or "") if days else ""
+        if len(iso) < 7:
+            return []
+        month = int(iso[5:7])
+        if month != previous:
+            labels.append((index, MONTH_NAMES[month - 1]))
+            previous = month
+    return labels
 
 
 def fetch_contributions(username: str, token: str | None) -> list[dict]:
@@ -403,6 +433,16 @@ def fetch_contributions(username: str, token: str | None) -> list[dict]:
         return []
 
 
+def _sealed_rect(x: float, y: float, w: float, h: float, fill: str, indent: str = "      ") -> str:
+    """A pixel that overlaps the next one, so scaling cannot open a background crack."""
+    bleed_x = min(w, 1.0) * 0.12
+    bleed_y = min(h, 1.0) * 0.12
+    return (
+        f'{indent}<rect x="{x:.4f}" y="{y:.4f}" width="{w + bleed_x:.4f}" '
+        f'height="{h + bleed_y:.4f}" fill="{fill}" />'
+    )
+
+
 def draw_sprite(
     name: str,
     pixels: list[str],
@@ -412,15 +452,12 @@ def draw_sprite(
 ) -> str:
     svg = [f'    <g id="{name}" shape-rendering="crispEdges">']
     if anchor_x:
-        svg.append(f'      <g transform="translate({-anchor_x:.1f}, 0)">')
+        svg.append(f'      <g transform="translate({-anchor_x:.4f}, 0)">')
     for y_index, row in enumerate(pixels):
         for x_index, mark in enumerate(row):
             if mark not in colors:
                 continue
-            svg.append(
-                f'      <rect x="{x_index * scale:.1f}" y="{y_index * scale:.1f}" '
-                f'width="{scale}" height="{scale}" fill="{colors[mark]}" />'
-            )
+            svg.append(_sealed_rect(x_index * scale, y_index * scale, scale, scale, colors[mark]))
     if anchor_x:
         svg.append("      </g>")
     svg.append("    </g>")
@@ -658,7 +695,7 @@ MAST_HOOP_SHADE = ("#4a2810", "#4a2810", "#6e6864", "#6e6864", "#c4bbb2", "#6e68
 
 def _append_rects(svg: list[str], rects: list[tuple[int, int, int, int, str]]) -> None:
     for x, y, w, h, fill in rects:
-        svg.append(f'    <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" />')
+        svg.append(_sealed_rect(x, y, w, h, fill, indent="    "))
 
 
 def _rle_rows(grid: list[list[str | None]], origin_x: int, origin_y: int) -> list[tuple[int, int, int, int, str]]:
@@ -820,10 +857,18 @@ def generate(username: str, filename: str) -> None:
     step = cell_size + gap
     cols = len(weeks_data) if weeks_data else 53
     rows = 7
-    grid_x_offset = 40
+    barrel_ink = max(
+        index + 1
+        for row in BARREL_PIXELS
+        for index, mark in enumerate(row)
+        if mark in BARREL_COLORS
+    )
+    # Gutter for Mon/Wed/Fri, clear of the barrel, as on GitHub's calendar.
+    grid_x_offset = 2 + barrel_ink + 32
     runner_height = len(RUNNER_PIXELS) * RUNNER_SCALE
     lookout_scale = runner_height / len(LOOKOUT_PIXELS)
-    top_padding = int(runner_height + 26)
+    # Extra sky so the highest jump stays on the canvas.
+    top_padding = int(runner_height + 44)
     mast_x = grid_x_offset + (cols * step) + 22
     helm_x = mast_x + 58
     width = helm_x + 64
@@ -838,14 +883,15 @@ def generate(username: str, filename: str) -> None:
     }
 
     svg = [
-        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">',
+        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">',
         "  <style>",
         "    .bg { fill: #8ecae6; }",
         "    .empty { fill: rgba(255,255,255,0.2); }",
-        "    .lvl1 { fill: #0e4429; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl2 { fill: #006d32; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl3 { fill: #26a641; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl4 { fill: #39d353; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl1 { fill: #9be9a8; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl2 { fill: #40c463; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl3 { fill: #30a14e; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl4 { fill: #216e39; stroke: #000; stroke-width: 0.5; }",
+        f'    .cal {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: {CALENDAR_FONT}px; fill: #1f2328; }}',
         "  </style>",
         "  <defs>",
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
@@ -860,17 +906,19 @@ def generate(username: str, filename: str) -> None:
         '  <rect width="100%" height="100%" class="bg" />',
     ]
     for index in range(4):
-        svg.append(f'  <use href="#cloud" x="0" y="{10 if index % 2 == 0 else 30}">')
+        cloud_y = 22 if index % 2 == 0 else 34
+        dur = 40 + index * 5
+        svg.append("  <g>")
         svg.append(
-            f'    <animate attributeName="x" from="{width}" to="-100" dur="{40 + (index * 5)}s" repeatCount="indefinite" />'
+            f'    <animateTransform attributeName="transform" type="translate" '
+            f'values="{width},{cloud_y}; -100,{cloud_y}" dur="{dur}s" repeatCount="indefinite" />'
         )
-        svg.append("  </use>")
+        svg.append('    <use href="#cloud" x="0" y="0" />')
+        svg.append("  </g>")
 
     svg.append('  <g id="deck" shape-rendering="crispEdges">')
     for deck_x, deck_y, deck_w, deck_h, deck_fill in deck_rects(width, ground_y, height):
-        svg.append(
-            f'    <rect x="{deck_x}" y="{deck_y}" width="{deck_w}" height="{deck_h}" fill="{deck_fill}" />'
-        )
+        svg.append(_sealed_rect(deck_x, deck_y, deck_w, deck_h, deck_fill, indent="    "))
     svg.append("  </g>")
     bush_height = len(BUSH_PIXELS)
     bush_width = max(len(row) for row in BUSH_PIXELS)
@@ -887,12 +935,14 @@ def generate(username: str, filename: str) -> None:
     barrel_x = 2
     barrel_top = ground_y - barrel_h
     barrel_cx = barrel_x + barrel_w / 2
-    svg.append(f'  <use href="#barrel" x="{barrel_x}" y="{barrel_top}" />')
 
     start_x = barrel_cx
+    # Feet on the deck, so the whole pirate is inside the barrel. The barrel is
+    # drawn after him and hides him until this climb carries him out of the top.
+    inside_y = ground_y - runner_height
     segments: list[tuple] = []
-    commands = [f"M {start_x:.1f} {ground_y:.1f}"]
-    current_x, current_y = start_x, ground_y
+    commands = [f"M {start_x:.1f} {inside_y:.1f}"]
+    current_x, current_y = start_x, inside_y
 
     def add_line(x: float, y: float) -> None:
         nonlocal current_x, current_y
@@ -942,6 +992,20 @@ def generate(username: str, filename: str) -> None:
         else:
             add_line(target_x, target_y)
 
+    svg.append('  <g class="cal" shape-rendering="geometricPrecision">')
+    # Month name starts at the week whose Sunday is in that month.
+    # Weekday name is centered on that row of cubes.
+    for column, name in month_columns(weeks_data):
+        svg.append(
+            f'    <text x="{grid_x_offset + column * step}" y="{top_padding - 2}">{name}</text>'
+        )
+    for row, name in WEEKDAY_LABELS:
+        label_y = top_padding + row * step + cell_size / 2 + CALENDAR_FONT * 0.4
+        svg.append(
+            f'    <text x="{grid_x_offset - 3}" y="{label_y:.1f}" text-anchor="end">{name}</text>'
+        )
+    svg.append("  </g>")
+
     slide_x = mast_x + 10
     grab_y = 10
     add_quad(slide_x, grab_y, 36)
@@ -962,16 +1026,36 @@ def generate(username: str, filename: str) -> None:
             slide_end_length = length
     slide_end = min(0.98, max(slide_start + 0.04, slide_end_length / total_length))
 
-    for meat in meats:
-        grabbed = time_at_x(samples, meat["hit"], total_length)
-        end = min(0.995, grabbed + 0.012)
-        svg.append(f'  <g transform="translate({meat["x"]}, {meat["y"]})">')
+    # Fade on its own group, same window as the coin: transparent over the
+    # 20px rise. A transform animation on that same element hides the opacity.
+    fade_css = ["  <style>"]
+    placed: list[tuple[dict, float, float]] = []
+    for index, meat in enumerate(meats):
+        grabbed = min(0.95, time_at_x(samples, meat["hit"], total_length))
+        end = min(1.0, grabbed + 0.03)
+        placed.append((meat, grabbed, end))
+        fade_css.append(
+            f"    @keyframes meat-fade-{index} {{"
+            f" 0%, {grabbed * 100:.1f}% {{ opacity: 1; }}"
+            f" {end * 100:.1f}%, 100% {{ opacity: 0; }} }}"
+        )
+        fade_css.append(
+            f"    #meat-pop-{index} {{ animation: meat-fade-{index} {LOOP_SECONDS}s linear infinite; }}"
+        )
+    fade_css.append("  </style>")
+    svg.extend(fade_css)
+    for index, (meat, grabbed, end) in enumerate(placed):
+        svg.append(f'  <g id="meat-pop-{index}" opacity="1" transform="translate({meat["x"]}, {meat["y"]})">')
+        svg.append(
+            f'    <animate attributeName="opacity" attributeType="CSS" '
+            f'values="1;1;0;0" '
+            f'keyTimes="0;{grabbed:.3f};{end:.3f};1" dur="{LOOP_SECONDS}s" repeatCount="indefinite" />'
+        )
         svg.append("    <g>")
         svg.append(
-            f'      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;{grabbed:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
-        )
-        svg.append(
-            f'      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;{grabbed:.3f};{end:.3f};1" dur="20s" repeatCount="indefinite" />'
+            f'      <animateTransform attributeName="transform" type="translate" '
+            f'values="0,0; 0,0; 0,-20; 0,-20" '
+            f'keyTimes="0;{grabbed:.3f};{end:.3f};1" dur="{LOOP_SECONDS}s" repeatCount="indefinite" />'
         )
         svg.append('      <use href="#meat" x="0" y="0" />')
         svg.append("    </g>")
@@ -993,7 +1077,7 @@ def generate(username: str, filename: str) -> None:
     svg.append("  </g>")
     svg.append("  <g>")
     svg.append(
-        f'    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,{drop:.1f}; 0,{drop:.1f}" keyTimes="0;{slide_start:.3f};{slide_end:.3f};1" dur="20s" repeatCount="indefinite" />'
+        f'    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,{drop:.1f}; 0,{drop:.1f}" keyTimes="0;{slide_start:.3f};{slide_end:.3f};1" dur="{LOOP_SECONDS}s" repeatCount="indefinite" />'
     )
     svg.append(f'    <use href="#lookout" x="{lookout_x}" y="{lookout_y}" />')
     svg.append("  </g>")
@@ -1005,8 +1089,9 @@ def generate(username: str, filename: str) -> None:
     svg.append("  </g>")
     svg.append(f'  <path id="parkour-path" d="{" ".join(commands)}" fill="none" stroke="none" />')
     svg.append('  <use href="#runner">')
-    svg.append('    <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>')
+    svg.append(f'    <animateMotion dur="{LOOP_SECONDS}s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>')
     svg.append("  </use>")
+    svg.append(f'  <use href="#barrel" x="{barrel_x}" y="{barrel_top}" />')
     svg.append("</svg>")
     Path(filename).parent.mkdir(parents=True, exist_ok=True)
     Path(filename).write_text("\n".join(svg), encoding="utf-8")
