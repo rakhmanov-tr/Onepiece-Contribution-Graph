@@ -20,6 +20,13 @@ LOOP_SECONDS = 20
 DAY = re.compile(r"<td\b[^>]*class=\"[^\"]*ContributionCalendar-day[^\"]*\"[^>]*>", re.I)
 ROW_COL = re.compile(r"contribution-day-component-(\d+)-(\d+)")
 LEVEL = re.compile(r"data-level=\"(\d)\"")
+DATE = re.compile(r'data-date="(\d{4}-\d{2}-\d{2})"')
+# GitHub's English calendar: month at the first Sunday of that month, and only
+# Mon/Wed/Fri down the side. Sunday is row 0.
+MONTH_NAMES = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+# Row 0 is Sunday. Every row is one weekday, so each name sits on its own cubes.
+WEEKDAY_LABELS = ((0, "Sun"), (1, "Mon"), (2, "Tue"), (3, "Wed"), (4, "Thu"), (5, "Fri"), (6, "Sat"))
+CALENDAR_FONT = 9
 
 # Front-facing pirate, traced from the drawn sprite. Each character is one pixel.
 RUNNER_SCALE = 1.2
@@ -343,7 +350,7 @@ def fetch_graphql(username: str, token: str) -> list[dict]:
       user(login: $userName){
         contributionsCollection {
           contributionCalendar {
-            weeks { contributionDays { contributionLevel } }
+            weeks { contributionDays { contributionLevel date } }
           }
         }
       }
@@ -366,14 +373,15 @@ def fetch_public(username: str) -> list[dict]:
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         html = response.read().decode("utf-8", "replace")
-    found: dict[tuple[int, int], int] = {}
+    found: dict[tuple[int, int], tuple[int, str]] = {}
     for tag in DAY.findall(html):
         slot = ROW_COL.search(tag)
         level = LEVEL.search(tag)
         if not slot or not level:
             continue
         row, col = int(slot.group(1)), int(slot.group(2))
-        found[(col, row)] = int(level.group(1))
+        day = DATE.search(tag)
+        found[(col, row)] = (int(level.group(1)), day.group(1) if day else "")
     if not found:
         return []
     cols = max(col for col, _ in found) + 1
@@ -383,12 +391,31 @@ def fetch_public(username: str) -> list[dict]:
         weeks.append(
             {
                 "contributionDays": [
-                    {"contributionLevel": LEVELS[min(found.get((col, row), 0), 4)]}
+                    {
+                        "contributionLevel": LEVELS[min(found.get((col, row), (0, ""))[0], 4)],
+                        "date": found.get((col, row), (0, ""))[1],
+                    }
                     for row in range(rows)
                 ]
             }
         )
     return weeks
+
+
+def month_columns(weeks: list[dict]) -> list[tuple[int, str]]:
+    """Columns where GitHub prints a month name: each week's Sunday."""
+    labels: list[tuple[int, str]] = []
+    previous = 0
+    for index, week in enumerate(weeks):
+        days = week.get("contributionDays") or []
+        iso = str(days[0].get("date") or "") if days else ""
+        if len(iso) < 7:
+            return []
+        month = int(iso[5:7])
+        if month != previous:
+            labels.append((index, MONTH_NAMES[month - 1]))
+            previous = month
+    return labels
 
 
 def fetch_contributions(username: str, token: str | None) -> list[dict]:
@@ -830,10 +857,18 @@ def generate(username: str, filename: str) -> None:
     step = cell_size + gap
     cols = len(weeks_data) if weeks_data else 53
     rows = 7
-    grid_x_offset = 40
+    barrel_ink = max(
+        index + 1
+        for row in BARREL_PIXELS
+        for index, mark in enumerate(row)
+        if mark in BARREL_COLORS
+    )
+    # Gutter for Mon/Wed/Fri, clear of the barrel, as on GitHub's calendar.
+    grid_x_offset = 2 + barrel_ink + 32
     runner_height = len(RUNNER_PIXELS) * RUNNER_SCALE
     lookout_scale = runner_height / len(LOOKOUT_PIXELS)
-    top_padding = int(runner_height + 26)
+    # Extra sky so the highest jump stays on the canvas.
+    top_padding = int(runner_height + 44)
     mast_x = grid_x_offset + (cols * step) + 22
     helm_x = mast_x + 58
     width = helm_x + 64
@@ -852,10 +887,11 @@ def generate(username: str, filename: str) -> None:
         "  <style>",
         "    .bg { fill: #8ecae6; }",
         "    .empty { fill: rgba(255,255,255,0.2); }",
-        "    .lvl1 { fill: #0e4429; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl2 { fill: #006d32; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl3 { fill: #26a641; stroke: #000; stroke-width: 0.5; }",
-        "    .lvl4 { fill: #39d353; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl1 { fill: #9be9a8; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl2 { fill: #40c463; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl3 { fill: #30a14e; stroke: #000; stroke-width: 0.5; }",
+        "    .lvl4 { fill: #216e39; stroke: #000; stroke-width: 0.5; }",
+        f'    .cal {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: {CALENDAR_FONT}px; fill: #1f2328; }}',
         "  </style>",
         "  <defs>",
         draw_sprite("runner", RUNNER_PIXELS, RUNNER_COLORS, RUNNER_SCALE, runner_foot_x()),
@@ -870,7 +906,7 @@ def generate(username: str, filename: str) -> None:
         '  <rect width="100%" height="100%" class="bg" />',
     ]
     for index in range(4):
-        cloud_y = 10 if index % 2 == 0 else 30
+        cloud_y = 22 if index % 2 == 0 else 34
         dur = 40 + index * 5
         svg.append("  <g>")
         svg.append(
@@ -955,6 +991,20 @@ def generate(username: str, filename: str) -> None:
             add_quad(target_x, target_y)
         else:
             add_line(target_x, target_y)
+
+    svg.append('  <g class="cal" shape-rendering="geometricPrecision">')
+    # Month name starts at the week whose Sunday is in that month.
+    # Weekday name is centered on that row of cubes.
+    for column, name in month_columns(weeks_data):
+        svg.append(
+            f'    <text x="{grid_x_offset + column * step}" y="{top_padding - 2}">{name}</text>'
+        )
+    for row, name in WEEKDAY_LABELS:
+        label_y = top_padding + row * step + cell_size / 2 + CALENDAR_FONT * 0.4
+        svg.append(
+            f'    <text x="{grid_x_offset - 3}" y="{label_y:.1f}" text-anchor="end">{name}</text>'
+        )
+    svg.append("  </g>")
 
     slide_x = mast_x + 10
     grab_y = 10
