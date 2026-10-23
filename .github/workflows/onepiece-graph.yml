@@ -2,8 +2,8 @@ name: Generate One Piece Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *" # каждый день в полночь UTC
-  workflow_dispatch: # ручной запуск
+    - cron: "0 0 * * *" # every day at midnight UTC
+  workflow_dispatch: # run it by hand
 
 jobs:
   build:

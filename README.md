@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🏴‍☠️ Уровень One Piece на графике вкладов GitHub
+**English** | [Русский](README.ru.md)
+
+# ☀️ Thousand Sunny GitHub Contribution Graph
 
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg?style=for-the-badge&logo=python&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
@@ -11,63 +13,65 @@
 
 ---
 
-### ⚓ Преврати график вкладов GitHub в живую палубу пиратского корабля
+### ⚓ Turn your GitHub contribution graph into the deck of the Thousand Sunny
 
-Python-скрипт и GitHub Actions забирают календарь вкладов через GitHub GraphQL API. Скрипт считает путь по неделям: пират вылезает из бочки SAKE, прыгает по самым высоким клеткам, собирает мясо в самые насыщенные дни и доходит до штурвала.
+A Python script and GitHub Actions read your contribution calendar through the GitHub GraphQL API and plot a course across the year. Luffy climbs out of a barrel of Zoro's sake, hops the tallest cells, snatches meat on your busiest days, and takes the helm. Zoro slides down from the crow's nest. Nami's tangerine trees line the deck.
 
-[**Сообщить о баге**](https://github.com/rakhmanov-tr/Onepiece-Contribution-Graph/issues) • [**Политика безопасности**](SECURITY.md)
+[**Report a Bug**](https://github.com/rakhmanov-tr/Onepiece-Contribution-Graph/issues) • [**Security Policy**](SECURITY.md)
 
 </div>
 
 ---
 
-## 🚀 Как это выглядит
+## 🚀 See it in action
 
 <picture>
-  <img alt="One Piece Contribution Graph" src="onepiece_contribution.svg" width="100%">
+  <img alt="Luffy crossing the Thousand Sunny contribution graph" src="onepiece_contribution.svg" width="100%">
 </picture>
 
 ---
 
-## 🌟 Что умеет уровень
+## 🌟 What the Sunny can do
 
-| Возможность | Как это работает |
+| Piece of the ship | What happens |
 |---|---|
-| 🏃‍♂️ **Паркур по клеткам** | Пират не бежит по прямой. На каждой неделе он встаёт на самую высокую непустую клетку и перепрыгивает, если высота меняется. |
-| 🍖 **Мясо** | Самые насыщенные дни (уровень 4) ставят мясо на клетку. Пират подбирает его, когда проходит мимо: кусок поднимается и исчезает. |
-| 🏴 **Финиш у штурвала** | Он вылезает из бочки, проходит год, соскальзывает по мачте и доходит до штурвала. Смотровой в это же окно спускается с марса на палубу. |
-| ☁️ **Палуба и небо** | Голубое небо, плывущие облака, мандариновые кусты по краю палубы, доски, мачта с вантами, марсовая площадка и штурвал. |
-| 🛡️ **Чистый SVG** | Весь рисунок собран из SVG, без внешних картинок. Один проход длится 20 секунд и крутится сам. |
+| 🏃‍♂️ **Luffy's parkour** | Luffy does not jog in a straight line. Each week he lands on the highest cell that has contributions, and he jumps when the height changes. |
+| 🍖 **Meat** | Your busiest days (level 4) set out a cut of meat. Luffy grabs it as he passes: the piece pops up and fades. |
+| 🍶 **Zoro's sake** | The run starts inside a sake barrel. Luffy climbs out of it onto the deck. |
+| 🍊 **Nami's grove** | Tangerine trees sit along the edge of the Sunny, the same grove Nami keeps on board. |
+| ⚔️ **Zoro on watch** | Zoro waits in the crow's nest. When Luffy reaches the mast, Zoro slides down to the deck. |
+| 🏴 **The helm** | Luffy crosses the year, rides the mast down, and finishes at the ship's wheel. |
+| 🛡️ **Pure SVG** | The whole scene is SVG, with no external images. One crossing takes 20 seconds and loops on its own. |
 
 ---
 
-## 🛠️ Как поставить себе
+## 🛠️ Add it to your own profile
 
-Файл `generate.py` уже лежит в этом репозитории. Его можно скопировать в свой репозиторий или сделать форк: workflow сам возьмёт логин владельца репозитория.
+`generate.py` is already in this repository. Copy it into your repo, or fork this one. The workflow uses the repository owner's login.
 
-### 1. Скрипт
+### 1. The script
 
-Положи в репозиторий файл `generate.py` из этого репозитория.
+Put `generate.py` from this repository in yours.
 
-Проверить локально:
+Try it locally:
 
 ```bash
 python generate.py --user YOUR_USERNAME
 ```
 
-Команда пишет `onepiece_contribution.svg` в корень. Страница [`preview/index.html`](preview/index.html) показывает этот файл.
+That writes `onepiece_contribution.svg` in the repo root. [`preview/index.html`](preview/index.html) shows the same file.
 
-### 2. Автоматизация
+### 2. The automation
 
-Создай файл `.github/workflows/onepiece-graph.yml`:
+Create `.github/workflows/onepiece-graph.yml`:
 
 ```yaml
 name: Generate One Piece Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *" # каждый день в полночь UTC
-  workflow_dispatch:    # ручной запуск
+    - cron: "0 0 * * *" # every day at midnight UTC
+  workflow_dispatch: # run it by hand
 
 jobs:
   build:
@@ -98,23 +102,23 @@ jobs:
           git push
 ```
 
-Workflow запускается по расписанию и вручную. Он коммитит `onepiece_contribution.svg` в ветку `main`. Отдельная ветка для картинки не нужна.
+The workflow runs on a schedule and when you start it by hand. It commits `onepiece_contribution.svg` to `main`. The picture lives on that one branch.
 
-### 3. Права на запись
+### 3. Write permission
 
-1. Открой **Settings → Actions → General**.
-2. В блоке **Workflow permissions** выбери **Read and write permissions**.
-3. Нажми **Save**.
+1. Open **Settings → Actions → General**.
+2. Under **Workflow permissions**, select **Read and write permissions**.
+3. Click **Save**.
 
-### 4. Первый запуск
+### 4. First run
 
-Открой вкладку **Actions**, выбери **Generate One Piece Contribution Graph** и нажми **Run workflow**. Когда сборка закончится, в корне `main` появится `onepiece_contribution.svg`.
+Open the **Actions** tab, choose **Generate One Piece Contribution Graph**, and click **Run workflow**. When the job finishes, `onepiece_contribution.svg` is in the root of `main`.
 
 ---
 
-## 🖼️ Как показать на профиле
+## 🖼️ Show it on your profile
 
-Вставь это в `README.md` своего профиля. Замени `YOUR_USERNAME` и `YOUR_REPO`:
+Paste this into your profile `README.md`. Replace `YOUR_USERNAME` and `YOUR_REPO`:
 
 ```html
 <div align="center">
@@ -126,24 +130,25 @@ Workflow запускается по расписанию и вручную. О�
 
 ---
 
-## 🎨 Что можно поменять
+## 🎨 Change the crew
 
-Всё в `generate.py`:
+Everything lives in `generate.py`:
 
-- **Скорость.** `LOOP_SECONDS` — длина одного прохода, сейчас 20 секунд.
-- **Пират.** `RUNNER_PIXELS` и `RUNNER_COLORS`: каждый символ в строке — один пиксель.
-- **Декор.** `CLOUD_PIXELS`, `BUSH_PIXELS`, `MEAT_PIXELS`, `LOOKOUT_PIXELS` — облака, мандариновые кусты, мясо и смотровой.
-- **Корабль.** Бочка, палуба, мачта и штурвал нарисованы фигурами ниже по файлу.
-- **Небо.** Цвет класса `.bg` в стилях SVG.
+- **Speed.** `LOOP_SECONDS` is the length of one crossing. It is 20 seconds.
+- **Luffy.** `RUNNER_PIXELS` and `RUNNER_COLORS`. Each character in a row is one pixel.
+- **Zoro.** `LOOKOUT_PIXELS`. He stands in the crow's nest.
+- **The rest of the scene.** `CLOUD_PIXELS`, `BUSH_PIXELS`, and `MEAT_PIXELS` are the clouds, Nami's tangerine trees, and the meat.
+- **The Sunny.** The sake barrel, deck, mast, and helm are drawn as shapes further down the file.
+- **Sky.** The `.bg` color in the SVG styles.
 
 ---
 
-## 🤝 Основа
+## 🤝 Credit
 
-Идея уровня и расчёт пути взяты из [sapthesh/Mario-Contribution-Graph](https://github.com/sapthesh/Mario-Contribution-Graph) (MIT, Copyright (c) 2026 Sapthesh V). Спрайт пирата в этой копии свой.
+The level idea and the path math come from [sapthesh/Mario-Contribution-Graph](https://github.com/sapthesh/Mario-Contribution-Graph) (MIT, Copyright (c) 2026 Sapthesh V). The Straw Hat sprites in this copy are original.
 
 <div align="center">
 
-Сделано по мотивам Mario Contribution Graph · [MIT](LICENSE)
+Built in the wake of the Mario Contribution Graph · [MIT](LICENSE)
 
 </div>
