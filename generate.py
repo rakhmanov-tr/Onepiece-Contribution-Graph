@@ -1100,9 +1100,11 @@ def generate(username: str, filename: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--user", default=os.environ.get("GITHUB_ACTOR", "rakhmanov-tr"))
-    parser.add_argument("--out", default="dist/level.svg")
+    parser.add_argument("--user", default=os.environ.get("GITHUB_ACTOR"))
+    parser.add_argument("--out", default="onepiece_contribution.svg")
     args = parser.parse_args()
+    if not args.user:
+        parser.error("pass --user LOGIN or set GITHUB_ACTOR")
     generate(args.user, args.out)
     out = Path(args.out).parent
     for stale in ("eater.svg", "eater-dark.svg", "dragon.svg", "dragon-dark.svg"):

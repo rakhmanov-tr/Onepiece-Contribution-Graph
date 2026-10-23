@@ -7693,7 +7693,7 @@
   <rect x="795" y="83" width="10" height="10" rx="2" class="lvl4" />
   <rect x="795" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="795" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="125" width="10" height="10" rx="2" class="empty" />
+  <rect x="795" y="125" width="10" height="10" rx="2" class="lvl2" />
   <rect x="795" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="795" y="153" width="10" height="10" rx="2" class="empty" />
   <g class="cal" shape-rendering="geometricPrecision">
