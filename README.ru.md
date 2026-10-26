@@ -112,7 +112,7 @@ Workflow запускается по расписанию и вручную. О�
 
 ### 4. Первый запуск
 
-Открой вкладку **Actions**, выбери **Generate One Piece Contribution Graph** и нажми **Run workflow**. Когда сборка закончится, `onepiece_contribution.svg` появится в корне `main`.
+В форке открой вкладку **Actions** и нажми **I understand my workflows, go ahead and enable them**. GitHub не запускает workflows, пока это не сделано. Затем выбери **Generate One Piece Contribution Graph** и нажми **Run workflow**. Когда сборка закончится, `onepiece_contribution.svg` появится в корне `main`.
 
 ---
 

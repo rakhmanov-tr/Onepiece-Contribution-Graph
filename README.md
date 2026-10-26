@@ -112,7 +112,7 @@ The workflow runs on a schedule and when you start it by hand. It commits `onepi
 
 ### 4. First run
 
-Open the **Actions** tab, choose **Generate One Piece Contribution Graph**, and click **Run workflow**. When the job finishes, `onepiece_contribution.svg` is in the root of `main`.
+On a fork, open the **Actions** tab and click **I understand my workflows, go ahead and enable them**. GitHub leaves workflows off until you do. Then choose **Generate One Piece Contribution Graph** and click **Run workflow**. When the job finishes, `onepiece_contribution.svg` is in the root of `main`.
 
 ---
 
