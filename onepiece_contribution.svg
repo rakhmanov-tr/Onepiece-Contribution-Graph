@@ -7353,14 +7353,14 @@
   <rect x="109" y="125" width="10" height="10" rx="2" class="empty" />
   <rect x="109" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="109" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="123" y="69" width="10" height="10" rx="2" class="empty" />
+  <rect x="123" y="69" width="10" height="10" rx="2" class="lvl1" />
   <rect x="123" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="123" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="123" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="123" y="125" width="10" height="10" rx="2" class="empty" />
   <rect x="123" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="123" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="137" y="69" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="137" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="137" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="137" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="137" y="111" width="10" height="10" rx="2" class="empty" />
@@ -7435,36 +7435,36 @@
   <rect x="277" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="277" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="277" y="125" width="10" height="10" rx="2" class="empty" />
-  <rect x="277" y="139" width="10" height="10" rx="2" class="empty" />
-  <rect x="277" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="291" y="69" width="10" height="10" rx="2" class="empty" />
-  <rect x="291" y="83" width="10" height="10" rx="2" class="empty" />
+  <rect x="277" y="139" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="277" y="153" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="291" y="69" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="291" y="83" width="10" height="10" rx="2" class="lvl1" />
   <rect x="291" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="291" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="291" y="125" width="10" height="10" rx="2" class="empty" />
-  <rect x="291" y="139" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="291" y="153" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="305" y="69" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="305" y="83" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="291" y="139" width="10" height="10" rx="2" class="empty" />
+  <rect x="291" y="153" width="10" height="10" rx="2" class="empty" />
+  <rect x="305" y="69" width="10" height="10" rx="2" class="empty" />
+  <rect x="305" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="305" y="97" width="10" height="10" rx="2" class="empty" />
-  <rect x="305" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="305" y="125" width="10" height="10" rx="2" class="empty" />
+  <rect x="305" y="111" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="305" y="125" width="10" height="10" rx="2" class="lvl1" />
   <rect x="305" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="305" y="153" width="10" height="10" rx="2" class="empty" />
   <rect x="319" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="319" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="319" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="319" y="111" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="319" y="125" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="319" y="139" width="10" height="10" rx="2" class="empty" />
-  <rect x="319" y="153" width="10" height="10" rx="2" class="empty" />
+  <rect x="319" y="125" width="10" height="10" rx="2" class="empty" />
+  <rect x="319" y="139" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="319" y="153" width="10" height="10" rx="2" class="lvl1" />
   <rect x="333" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="333" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="333" y="97" width="10" height="10" rx="2" class="empty" />
-  <rect x="333" y="111" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="333" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="333" y="125" width="10" height="10" rx="2" class="empty" />
-  <rect x="333" y="139" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="333" y="153" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="333" y="139" width="10" height="10" rx="2" class="empty" />
+  <rect x="333" y="153" width="10" height="10" rx="2" class="empty" />
   <rect x="347" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="347" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="347" y="97" width="10" height="10" rx="2" class="empty" />
@@ -7505,16 +7505,16 @@
   <rect x="417" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="417" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="417" y="125" width="10" height="10" rx="2" class="empty" />
-  <rect x="417" y="139" width="10" height="10" rx="2" class="empty" />
-  <rect x="417" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="431" y="69" width="10" height="10" rx="2" class="empty" />
+  <rect x="417" y="139" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="417" y="153" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="431" y="69" width="10" height="10" rx="2" class="lvl1" />
   <rect x="431" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="431" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="431" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="431" y="125" width="10" height="10" rx="2" class="empty" />
-  <rect x="431" y="139" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="431" y="153" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="445" y="69" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="431" y="139" width="10" height="10" rx="2" class="empty" />
+  <rect x="431" y="153" width="10" height="10" rx="2" class="empty" />
+  <rect x="445" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="445" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="445" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="445" y="111" width="10" height="10" rx="2" class="empty" />
@@ -7615,14 +7615,14 @@
   <rect x="641" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="641" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="641" y="97" width="10" height="10" rx="2" class="empty" />
-  <rect x="641" y="111" width="10" height="10" rx="2" class="empty" />
+  <rect x="641" y="111" width="10" height="10" rx="2" class="lvl1" />
   <rect x="641" y="125" width="10" height="10" rx="2" class="empty" />
   <rect x="641" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="641" y="153" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="69" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="97" width="10" height="10" rx="2" class="empty" />
-  <rect x="655" y="111" width="10" height="10" rx="2" class="lvl1" />
+  <rect x="655" y="111" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="125" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="655" y="153" width="10" height="10" rx="2" class="empty" />
@@ -7668,48 +7668,42 @@
   <rect x="739" y="125" width="10" height="10" rx="2" class="empty" />
   <rect x="739" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="739" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="753" y="69" width="10" height="10" rx="2" class="empty" />
+  <rect x="753" y="69" width="10" height="10" rx="2" class="lvl1" />
   <rect x="753" y="83" width="10" height="10" rx="2" class="empty" />
   <rect x="753" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="753" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="753" y="125" width="10" height="10" rx="2" class="empty" />
+  <rect x="753" y="125" width="10" height="10" rx="2" class="lvl4" />
   <rect x="753" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="753" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="767" y="69" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="767" y="83" width="10" height="10" rx="2" class="empty" />
+  <rect x="767" y="69" width="10" height="10" rx="2" class="empty" />
+  <rect x="767" y="83" width="10" height="10" rx="2" class="lvl4" />
   <rect x="767" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="767" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="767" y="125" width="10" height="10" rx="2" class="lvl4" />
+  <rect x="767" y="125" width="10" height="10" rx="2" class="lvl2" />
   <rect x="767" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="767" y="153" width="10" height="10" rx="2" class="empty" />
   <rect x="781" y="69" width="10" height="10" rx="2" class="empty" />
-  <rect x="781" y="83" width="10" height="10" rx="2" class="lvl4" />
+  <rect x="781" y="83" width="10" height="10" rx="2" class="lvl1" />
   <rect x="781" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="781" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="781" y="125" width="10" height="10" rx="2" class="lvl2" />
+  <rect x="781" y="125" width="10" height="10" rx="2" class="lvl1" />
   <rect x="781" y="139" width="10" height="10" rx="2" class="empty" />
   <rect x="781" y="153" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="69" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="83" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="795" y="97" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="125" width="10" height="10" rx="2" class="lvl1" />
-  <rect x="795" y="139" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="153" width="10" height="10" rx="2" class="empty" />
+  <rect x="795" y="69" width="10" height="10" rx="2" class="lvl4" />
   <g class="cal" shape-rendering="geometricPrecision">
-    <text x="67" y="67">Oct</text>
-    <text x="81" y="67">Nov</text>
-    <text x="151" y="67">Dec</text>
-    <text x="207" y="67">Jan</text>
-    <text x="263" y="67">Feb</text>
-    <text x="319" y="67">Mar</text>
-    <text x="389" y="67">Apr</text>
-    <text x="445" y="67">May</text>
-    <text x="515" y="67">Jun</text>
-    <text x="571" y="67">Jul</text>
-    <text x="627" y="67">Aug</text>
-    <text x="697" y="67">Sep</text>
-    <text x="753" y="67">Oct</text>
+    <text x="67" y="67">Nov</text>
+    <text x="137" y="67">Dec</text>
+    <text x="193" y="67">Jan</text>
+    <text x="249" y="67">Feb</text>
+    <text x="305" y="67">Mar</text>
+    <text x="375" y="67">Apr</text>
+    <text x="431" y="67">May</text>
+    <text x="501" y="67">Jun</text>
+    <text x="557" y="67">Jul</text>
+    <text x="613" y="67">Aug</text>
+    <text x="683" y="67">Sep</text>
+    <text x="739" y="67">Oct</text>
+    <text x="795" y="67">Nov</text>
     <text x="64" y="77.6" text-anchor="end">Sun</text>
     <text x="64" y="91.6" text-anchor="end">Mon</text>
     <text x="64" y="105.6" text-anchor="end">Tue</text>
@@ -7719,94 +7713,103 @@
     <text x="64" y="161.6" text-anchor="end">Sat</text>
   </g>
   <style>
-    @keyframes meat-fade-0 { 0%, 8.3% { opacity: 1; } 11.3%, 100% { opacity: 0; } }
+    @keyframes meat-fade-0 { 0%, 10.8% { opacity: 1; } 13.8%, 100% { opacity: 0; } }
     #meat-pop-0 { animation: meat-fade-0 20s linear infinite; }
-    @keyframes meat-fade-1 { 0%, 22.0% { opacity: 1; } 25.0%, 100% { opacity: 0; } }
+    @keyframes meat-fade-1 { 0%, 19.5% { opacity: 1; } 22.5%, 100% { opacity: 0; } }
     #meat-pop-1 { animation: meat-fade-1 20s linear infinite; }
-    @keyframes meat-fade-2 { 0%, 26.9% { opacity: 1; } 29.9%, 100% { opacity: 0; } }
+    @keyframes meat-fade-2 { 0%, 24.5% { opacity: 1; } 27.5%, 100% { opacity: 0; } }
     #meat-pop-2 { animation: meat-fade-2 20s linear infinite; }
-    @keyframes meat-fade-3 { 0%, 43.5% { opacity: 1; } 46.5%, 100% { opacity: 0; } }
+    @keyframes meat-fade-3 { 0%, 41.4% { opacity: 1; } 44.4%, 100% { opacity: 0; } }
     #meat-pop-3 { animation: meat-fade-3 20s linear infinite; }
-    @keyframes meat-fade-4 { 0%, 58.7% { opacity: 1; } 61.7%, 100% { opacity: 0; } }
+    @keyframes meat-fade-4 { 0%, 56.9% { opacity: 1; } 59.9%, 100% { opacity: 0; } }
     #meat-pop-4 { animation: meat-fade-4 20s linear infinite; }
-    @keyframes meat-fade-5 { 0%, 63.6% { opacity: 1; } 66.6%, 100% { opacity: 0; } }
+    @keyframes meat-fade-5 { 0%, 61.8% { opacity: 1; } 64.8%, 100% { opacity: 0; } }
     #meat-pop-5 { animation: meat-fade-5 20s linear infinite; }
-    @keyframes meat-fade-6 { 0%, 68.4% { opacity: 1; } 71.4%, 100% { opacity: 0; } }
+    @keyframes meat-fade-6 { 0%, 66.7% { opacity: 1; } 69.7%, 100% { opacity: 0; } }
     #meat-pop-6 { animation: meat-fade-6 20s linear infinite; }
-    @keyframes meat-fade-7 { 0%, 79.6% { opacity: 1; } 82.6%, 100% { opacity: 0; } }
+    @keyframes meat-fade-7 { 0%, 78.1% { opacity: 1; } 81.1%, 100% { opacity: 0; } }
     #meat-pop-7 { animation: meat-fade-7 20s linear infinite; }
-    @keyframes meat-fade-8 { 0%, 87.0% { opacity: 1; } 90.0%, 100% { opacity: 0; } }
+    @keyframes meat-fade-8 { 0%, 85.6% { opacity: 1; } 88.6%, 100% { opacity: 0; } }
     #meat-pop-8 { animation: meat-fade-8 20s linear infinite; }
-    @keyframes meat-fade-9 { 0%, 88.2% { opacity: 1; } 91.2%, 100% { opacity: 0; } }
+    @keyframes meat-fade-9 { 0%, 86.8% { opacity: 1; } 89.8%, 100% { opacity: 0; } }
     #meat-pop-9 { animation: meat-fade-9 20s linear infinite; }
+    @keyframes meat-fade-10 { 0%, 89.9% { opacity: 1; } 92.9%, 100% { opacity: 0; } }
+    #meat-pop-10 { animation: meat-fade-10 20s linear infinite; }
   </style>
   <g id="meat-pop-0" opacity="1" transform="translate(109.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.083;0.113;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.108;0.138;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.083;0.113;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.108;0.138;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-1" opacity="1" transform="translate(193.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.220;0.250;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-1" opacity="1" transform="translate(179.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.195;0.225;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.220;0.250;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.195;0.225;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-2" opacity="1" transform="translate(249.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.269;0.299;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-2" opacity="1" transform="translate(235.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.245;0.275;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.269;0.299;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.245;0.275;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-3" opacity="1" transform="translate(389.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.435;0.465;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-3" opacity="1" transform="translate(375.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.414;0.444;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.435;0.465;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.414;0.444;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-4" opacity="1" transform="translate(501.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.587;0.617;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-4" opacity="1" transform="translate(487.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.569;0.599;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.587;0.617;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.569;0.599;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-5" opacity="1" transform="translate(557.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.636;0.666;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-5" opacity="1" transform="translate(543.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.618;0.648;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.636;0.666;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.618;0.648;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-6" opacity="1" transform="translate(613.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.684;0.714;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-6" opacity="1" transform="translate(599.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.667;0.697;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.684;0.714;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.667;0.697;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-7" opacity="1" transform="translate(711.0, 109.52727272727275)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.796;0.826;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-7" opacity="1" transform="translate(697.0, 109.52727272727275)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.781;0.811;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.796;0.826;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.781;0.811;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-8" opacity="1" transform="translate(767.0, 126.36363636363636)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.870;0.900;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-8" opacity="1" transform="translate(753.0, 126.36363636363636)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.856;0.886;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.870;0.900;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.856;0.886;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
-  <g id="meat-pop-9" opacity="1" transform="translate(781.0, 84.36363636363636)">
-    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.882;0.912;1" dur="20s" repeatCount="indefinite" />
+  <g id="meat-pop-9" opacity="1" transform="translate(767.0, 84.36363636363636)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.868;0.898;1" dur="20s" repeatCount="indefinite" />
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.882;0.912;1" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.868;0.898;1" dur="20s" repeatCount="indefinite" />
+      <use href="#meat" x="0" y="0" />
+    </g>
+  </g>
+  <g id="meat-pop-10" opacity="1" transform="translate(795.0, 70.36363636363636)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.899;0.929;1" dur="20s" repeatCount="indefinite" />
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.899;0.929;1" dur="20s" repeatCount="indefinite" />
       <use href="#meat" x="0" y="0" />
     </g>
   </g>
@@ -8547,7 +8550,7 @@
     <rect x="817.0000" y="40.0000" width="35.1200" height="1.1200" fill="#4a2810" />
   </g>
   <g>
-    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,131.8; 0,131.8" keyTimes="0;0.920;0.974;1" dur="20s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,131.8; 0,131.8" keyTimes="0;0.918;0.973;1" dur="20s" repeatCount="indefinite" />
     <use href="#lookout" x="826.31" y="10.000000000000004" />
   </g>
   <g id="helm" shape-rendering="crispEdges">
@@ -8583,7 +8586,7 @@
     <rect x="917.0000" y="157.0000" width="3.1200" height="1.1200" fill="#4a2810" />
     <use href="#wheel" x="898" y="128" />
   </g>
-  <path id="parkour-path" d="M 18.5 141.8 L 18.5 106.8 Q 42.8 81.8 67.0 141.8 L 81.0 141.8 L 95.0 141.8 Q 102.0 91.8 109.0 116.8 Q 116.0 91.8 123.0 141.8 Q 130.0 18.8 137.0 43.8 Q 144.0 18.8 151.0 141.8 L 165.0 141.8 L 179.0 141.8 Q 186.0 91.8 193.0 116.8 Q 200.0 91.8 207.0 141.8 L 221.0 141.8 L 235.0 141.8 Q 242.0 91.8 249.0 116.8 Q 256.0 91.8 263.0 141.8 L 277.0 141.8 Q 284.0 88.8 291.0 113.8 Q 298.0 18.8 305.0 43.8 Q 312.0 18.8 319.0 85.8 L 333.0 85.8 Q 340.0 60.8 347.0 141.8 L 361.0 141.8 L 375.0 141.8 Q 382.0 91.8 389.0 116.8 Q 396.0 91.8 403.0 141.8 L 417.0 141.8 Q 424.0 88.8 431.0 113.8 Q 438.0 18.8 445.0 43.8 Q 452.0 18.8 459.0 141.8 L 473.0 141.8 L 487.0 141.8 Q 494.0 91.8 501.0 116.8 Q 508.0 91.8 515.0 141.8 L 529.0 141.8 L 543.0 141.8 Q 550.0 91.8 557.0 116.8 Q 564.0 91.8 571.0 141.8 L 585.0 141.8 L 599.0 141.8 Q 606.0 91.8 613.0 116.8 Q 620.0 91.8 627.0 141.8 L 641.0 141.8 Q 648.0 60.8 655.0 85.8 Q 662.0 60.8 669.0 141.8 L 683.0 141.8 L 697.0 141.8 Q 704.0 91.8 711.0 116.8 Q 718.0 91.8 725.0 141.8 L 739.0 141.8 L 753.0 141.8 Q 760.0 18.8 767.0 43.8 Q 774.0 18.8 781.0 57.8 L 795.0 57.8 Q 818.0 -26.0 841.0 10.0 L 841.0 141.8 L 905.0 141.8" fill="none" stroke="none" />
+  <path id="parkour-path" d="M 18.5 141.8 L 18.5 106.8 Q 42.8 81.8 67.0 141.8 L 81.0 141.8 L 95.0 141.8 Q 102.0 91.8 109.0 116.8 Q 116.0 18.8 123.0 43.8 Q 130.0 18.8 137.0 141.8 L 151.0 141.8 L 165.0 141.8 Q 172.0 91.8 179.0 116.8 Q 186.0 91.8 193.0 141.8 L 207.0 141.8 L 221.0 141.8 Q 228.0 91.8 235.0 116.8 Q 242.0 91.8 249.0 141.8 L 263.0 141.8 Q 270.0 88.8 277.0 113.8 Q 284.0 18.8 291.0 43.8 Q 298.0 18.8 305.0 85.8 L 319.0 85.8 Q 326.0 60.8 333.0 141.8 L 347.0 141.8 L 361.0 141.8 Q 368.0 91.8 375.0 116.8 Q 382.0 91.8 389.0 141.8 L 403.0 141.8 Q 410.0 88.8 417.0 113.8 Q 424.0 18.8 431.0 43.8 Q 438.0 18.8 445.0 141.8 L 459.0 141.8 L 473.0 141.8 Q 480.0 91.8 487.0 116.8 Q 494.0 91.8 501.0 141.8 L 515.0 141.8 L 529.0 141.8 Q 536.0 91.8 543.0 116.8 Q 550.0 91.8 557.0 141.8 L 571.0 141.8 L 585.0 141.8 Q 592.0 91.8 599.0 116.8 Q 606.0 91.8 613.0 141.8 L 627.0 141.8 Q 634.0 60.8 641.0 85.8 Q 648.0 60.8 655.0 141.8 L 669.0 141.8 L 683.0 141.8 Q 690.0 91.8 697.0 116.8 Q 704.0 91.8 711.0 141.8 L 725.0 141.8 L 739.0 141.8 Q 746.0 18.8 753.0 43.8 Q 760.0 18.8 767.0 57.8 L 781.0 57.8 Q 788.0 18.8 795.0 43.8 Q 818.0 -26.0 841.0 10.0 L 841.0 141.8 L 905.0 141.8" fill="none" stroke="none" />
   <use href="#runner">
     <animateMotion dur="20s" repeatCount="indefinite"><mpath href="#parkour-path"/></animateMotion>
   </use>
