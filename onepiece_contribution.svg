@@ -7693,7 +7693,8 @@
   <rect x="795" y="83" width="10" height="10" rx="2" class="lvl4" />
   <rect x="795" y="97" width="10" height="10" rx="2" class="empty" />
   <rect x="795" y="111" width="10" height="10" rx="2" class="empty" />
-  <rect x="795" y="125" width="10" height="10" rx="2" class="empty" />
+  <rect x="795" y="125" width="10" height="10" rx="2" class="lvl4" />
+  <rect x="795" y="139" width="10" height="10" rx="2" class="empty" />
   <g class="cal" shape-rendering="geometricPrecision">
     <text x="67" y="67">Nov</text>
     <text x="109" y="67">Dec</text>
@@ -7739,6 +7740,8 @@
     #meat-pop-9 { animation: meat-fade-9 20s linear infinite; }
     @keyframes meat-fade-10 { 0%, 90.4% { opacity: 1; } 93.4%, 100% { opacity: 0; } }
     #meat-pop-10 { animation: meat-fade-10 20s linear infinite; }
+    @keyframes meat-fade-11 { 0%, 90.4% { opacity: 1; } 93.4%, 100% { opacity: 0; } }
+    #meat-pop-11 { animation: meat-fade-11 20s linear infinite; }
   </style>
   <g id="meat-pop-0" opacity="1" transform="translate(151.0, 109.52727272727275)">
     <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.168;0.198;1" dur="20s" repeatCount="indefinite" />
@@ -7811,6 +7814,13 @@
     </g>
   </g>
   <g id="meat-pop-10" opacity="1" transform="translate(795.0, 84.36363636363636)">
+    <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.904;0.934;1" dur="20s" repeatCount="indefinite" />
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.904;0.934;1" dur="20s" repeatCount="indefinite" />
+      <use href="#meat" x="0" y="0" />
+    </g>
+  </g>
+  <g id="meat-pop-11" opacity="1" transform="translate(795.0, 126.36363636363636)">
     <animate attributeName="opacity" attributeType="CSS" values="1;1;0;0" keyTimes="0;0.904;0.934;1" dur="20s" repeatCount="indefinite" />
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-20; 0,-20" keyTimes="0;0.904;0.934;1" dur="20s" repeatCount="indefinite" />
